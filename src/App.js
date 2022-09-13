@@ -28,7 +28,7 @@ function App() {
 
   return (
     <div className="app">
-      <Tabs value={value} onChange={handleChange}>
+      <Tabs centered={true} value={value} onChange={handleChange}>
         <Tab value="one" label="Home" />
         <Tab value="two" label="Map"/>
         <Tab value="three" label="History" />
