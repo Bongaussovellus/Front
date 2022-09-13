@@ -1,11 +1,13 @@
 import { signInWithGoogle } from '../service/firebase';
+import {GoogleButton} from 'react-google-button'
 
 import '../App.css';
+
 
 const Login = () => {
   return (
     <div>
-      <button className="button" onClick={signInWithGoogle}><i className="fab fa-google"></i>Sign in with google</button>
+      <GoogleButton className="button" onClick={signInWithGoogle}><i className="fab fa-google"></i></GoogleButton>
     </div>
   )
 }
