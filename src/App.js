@@ -34,9 +34,10 @@ function App() {
         <Tab value="three" label="History" />
       </Tabs>
       
+      {user ? <Home user={user} /> : <Login />}
       {value === 'two' && <div><Map/></div>}
       {value === 'three' && <div><History/></div>}
-      {user ? <Home user={user} /> : <Login />}
+      
     </div>
   );
 }

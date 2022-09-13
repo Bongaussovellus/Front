@@ -1,3 +1,31 @@
+<<<<<<< HEAD
+=======
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+  align-content: center;
+}
+
+h1 {
+  text-align: center;
+}
+
+>>>>>>> dad5dd189607ca665bf352f61aca7d393d142e74
 img {
   border-radius: 50%; 
   display: block;
