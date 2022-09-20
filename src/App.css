@@ -10,6 +10,13 @@ img {
   margin-top: 3%;
 }
 
+.button {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
 
 .button-38 {
   background-color: #FFFFFF;
