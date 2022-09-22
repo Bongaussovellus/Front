@@ -51,3 +51,8 @@ img {
 h1 {
   text-align: center;
 }
+
+.map {
+  margin-top: 15%;
+  padding: 40px;
+}
