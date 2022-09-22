@@ -5,6 +5,8 @@ import Map from './components/Map';
 import History from './components/History';
 import firebase from './service/firebase';
 import { Tabs, Tab } from '@mui/material';
+import { db } from './service/firebase';
+import {collection, addDoc, getFirestore, getDocs, doc, setDoc} from "firebase/firestore";
 
 import './App.css';
 
@@ -24,6 +26,19 @@ function App() {
     })
   }, [])
 
+  const [testi, setTesti] = useState([]);
+  const testiCollectionRef = collection(db, 'testi');
+
+  useEffect(() => {
+    const getTesti = async () => {
+      const data = await getDocs(testiCollectionRef);
+      setTesti(data.docs.map((doc) => ({...doc.data(), id: doc.id})))
+    }; 
+
+    getTesti()
+  }, []);
+
+
 
   return (
     <div className="app">
@@ -36,6 +51,7 @@ function App() {
       {user ? <Home user={user} /> : <Login />}
       {value === 'two' && <div><Map/></div>}
       {value === 'three' && <div><History/></div>}
+      
       
     </div>
   );
