@@ -9,6 +9,7 @@ import { db } from './service/firebase';
 import {collection, addDoc, getFirestore, getDocs, doc, setDoc} from "firebase/firestore";
 
 import './App.css';
+import AddRegistry from './components/AddRegistry';
 
 
 
@@ -46,11 +47,13 @@ function App() {
         <Tab value="one" label="Home" />
         <Tab value="two" label="Map"/>
         <Tab value="three" label="History" />
+        <Tab value="four" label="New spot" />
       </Tabs>
       
       {user ? <Home user={user} /> : <Login />}
       {value === 'two' && <div><Map/></div>}
       {value === 'three' && <div><History/></div>}
+      {value === 'four' && <div><AddRegistry/></div>}
       
       
     </div>
