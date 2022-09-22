@@ -12,10 +12,7 @@ render(){
         <h1>Tänne kartta.</h1>
         <Map google={this.props.google} zoom={14}>
  
-        <Marker
-            onClick={onMarkerClick}
-            {...props}
-        />
+      
  
         <InfoWindow onClose={this.onInfoWindowClose}>
             <div>
