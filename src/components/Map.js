@@ -1,7 +1,6 @@
 import {GoogleMap, useLoadScript, InfoWindow, Marker, MarkerClusterer,} from '@react-google-maps/api';
 import React, { Component } from 'react';
 import { formatRelative } from "date-fns";
-import mapStyles from './mapStyles';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,

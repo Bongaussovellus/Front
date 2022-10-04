@@ -2,8 +2,14 @@ h1 {
   text-align: center;
 }
 
-img {
-  border-radius: 50%; 
+.Avatar {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+}
+
+.button {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -52,7 +58,40 @@ h1 {
   text-align: center;
 }
 
-.map {
-  margin-top: 15%;
-  padding: 40px;
+.Paper {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  margin-top: 3%;
+}
+
+.search {
+  position: absolute;
+  top: 0rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 400px;
+  z-index: 10;
+}
+
+.search input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.locate {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  z-index: 10;
+}
+
+.locate img {
+  width: 30px;
+  cursor: pointer;
 }
