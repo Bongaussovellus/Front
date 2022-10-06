@@ -40,18 +40,18 @@ export default function Map() {
     libraries: ["places"]
   });
 
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+const [markers, setMarkers] = React.useState([]);
+const [selected, setSelected] = React.useState(null);
 
-  const onMapClick = React.useCallback((event) => {
+  const onMapClick = React.useCallback((event) => { // Asettaa markkerin valittuun pisteeseen
     setMarkers(current => [
       ...current, 
       {
-        lat: event.latLng.lat(),
+        lat: event.latLng.lat(),  // Hakee koordinaatit
         lng: event.latLng.lng(),
-        time: new Date(),
-    },
-  ]);
+        time: new Date(),  // Asettaa kellonajan ja päivämäärän
+      },
+    ]);
   }, [])
 
   const mapRef = React.useRef();
@@ -59,7 +59,7 @@ export default function Map() {
     mapRef.current = map;
   }, []);
 
-  const panTo = React.useCallback(({lat, lng}) => {
+  const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja zoomaa siihen
   mapRef.current.panTo({lat, lng});
   mapRef.current.setZoom(14);
    }, []);
@@ -68,10 +68,8 @@ export default function Map() {
   if (!isLoaded) return "Ladataan karttaa...";
 
 return <div>    
-
     <Search panTo={panTo} />
     <Locate panTo={panTo} />
-
     <GoogleMap 
     mapContainerStyle={mapContainerStyle}
     zoom={8}
@@ -82,44 +80,48 @@ return <div>
     >
       {markers.map(marker => (
       <Marker
-       key={marker.time.toISOString()}
+       key={marker.time.toISOString()}  // Esittää kellonajan
        position= { { lat: marker.lat, lng: marker.lng }}
        onClick={() =>{
         setSelected(marker);
        }}
        />))}
+
        {selected ? (
        <InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => {
         setSelected(null);
        }}>
-        <div>
+
+        <div> 
           <h2>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
+          <form>
+            <input type="text" placeholder="Syötä rekisterinumero"></input> 
+            <input type="submit" value="Tallenna"></input>
+          </form>
         </div>
        </InfoWindow>): null}
     </GoogleMap>
   </div>;
 }
 
-function Locate({ panTo } ) {
+function Locate({ panTo } ) {  // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
   return (
-  <button className="locate" onClick={() => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    panTo({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    });
-  },
-  () => null
+    <button className="locate" onClick={() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    }, () => null
   );
 }}>
-
   <img src="compass.svg" alt="compass - locate me" />
   </button>
 )}
 
 
-function Search( { panTo }) {
+function Search( { panTo }) { //Hakubaari 
   const {
     ready, 
     value, 
@@ -133,39 +135,38 @@ function Search( { panTo }) {
   });
 
   return (
-  <div className="search">
-    <Combobox 
-     onSelect={async (address) => 
-    {
+    <div className="search">
+      <Combobox 
+      onSelect={async (address) => {  
       setValue(address, false); 
       clearSuggestions()
+        try {
+          const results =  await getGeocode({ address });
+          const { lat, lng } = await getLatLng(results[0]);
+          panTo({ lat, lng });
+            } 
+          catch(error) {
+            console.log("error")
+          }
+        }}
+      >
 
-      try {
-        const results =  await getGeocode({ address });
-        const { lat, lng } = await getLatLng(results[0]);
-        panTo({ lat, lng });
-        } 
-        catch(error) {
-        console.log("error")
-      }
-    }}
-    >
       <ComboboxInput
-       value={value}
+        value={value}
         onChange={(e) => {
-      setValue(e.target.value);
-    }}
+          setValue(e.target.value);
+        }}
         disabled={!ready}
         placeholder="Syötä osoite"
       />
-  <ComboboxPopover>
-    <ComboboxList>
-    {status === "OK" && 
-    
-    data.map(( {id, description }) => (    <ComboboxOption key={id} value={description} />
-    ))}
-    </ComboboxList>
-  </ComboboxPopover>
+
+    <ComboboxPopover>
+        <ComboboxList>
+          {status === "OK" && 
+          data.map(( {id, description }) => 
+        (<ComboboxOption key={id} value={description} />))}
+       </ComboboxList>
+     </ComboboxPopover>
   </Combobox>
   </div>
   )
