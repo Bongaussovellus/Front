@@ -1,4 +1,4 @@
-import {GoogleMap, useLoadScript, InfoWindow, Marker, MarkerClusterer,} from '@react-google-maps/api';
+import {GoogleMap, useLoadScript, InfoWindowF, Marker, MarkerClusterer,} from '@react-google-maps/api';
 import React, { Component } from 'react';
 import { formatRelative } from "date-fns";
 import mapStyles from './mapStyles';
@@ -19,7 +19,7 @@ import "@reach/combobox/styles.css";
 const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
 const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
-const mapContainerStyle = {
+const mapContainerStyle = {  // Kartan leveys ja korkeus
   width: '100vw',
   height: '80vh',
 };
@@ -55,14 +55,20 @@ export default function Map() {
   ]);
   }, [])
 
-  const mapRef = React.useRef();
+  const mapRef = React.useRef();  
   const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map;
+    mapRef.current = map; // tallennetaan kartta useRefiin
   }, []);
 
+<<<<<<< Updated upstream
   const panTo = React.useCallback(({lat, lng}) => {
   mapRef.current.panTo({lat, lng});
   mapRef.current.setZoom(14);
+=======
+  const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja zoomaa siihen
+  mapRef.current.panTo({lat, lng}); // koordinaatit
+  mapRef.current.setZoom(16); // zoom 
+>>>>>>> Stashed changes
    }, []);
 
   if (loadError) return "Virhe ladatessa karttaa";
@@ -83,21 +89,25 @@ return <div>
     >
       {markers.map(marker => (
       <Marker
+<<<<<<< Updated upstream
        key={marker.time.toISOString()}
+=======
+       key={marker.time.toISOString()}  
+>>>>>>> Stashed changes
        position= { { lat: marker.lat, lng: marker.lng }}
        onClick={() =>{
         setSelected(marker);
        }}
        />))}
        {selected ? (
-       <InfoWindow position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => {
+       <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => {
         setSelected(null);
        }}>
         <div>
           <h2>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
         </div>
-       </InfoWindow>): null}
+       </InfoWindowF>): null}
     </GoogleMap>
   </div>;
 }
