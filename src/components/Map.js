@@ -1,7 +1,6 @@
-import {GoogleMap, useLoadScript, InfoWindowF, Marker, MarkerClusterer,} from '@react-google-maps/api';
-import React, { Component } from 'react';
+import {GoogleMap, useLoadScript, Marker, InfoWindowF,} from '@react-google-maps/api';
+import React, { useState } from 'react';
 import { formatRelative } from "date-fns";
-import mapStyles from './mapStyles';
 import usePlacesAutocomplete, {
   getGeocode,
   getLatLng,
@@ -19,7 +18,7 @@ import "@reach/combobox/styles.css";
 const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
 const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
-const mapContainerStyle = {  // Kartan leveys ja korkeus
+const mapContainerStyle = {
   width: '100vw',
   height: '80vh',
 };
@@ -35,50 +34,60 @@ const options = {
 const libraries = ["places"];
 
 export default function Map() {
+
+  const [registry, setValue] = useState({
+    numberplate: '',
+    date: new Date(),
+    location: ''
+  })
+  
+  const [registries, setValues] = useState([])
+
+  const inputChanged = (e) => {
+    setValue({...registry, [e.target.name]: e.target.value})
+  }
+
+  const addRegistry = (e) => {
+    e.preventDefault()
+    setValues([...registries, registry])
+  }
+
   const {isLoaded, loadError} = useLoadScript ({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     libraries: ["places"]
   });
 
-  const [markers, setMarkers] = React.useState([]);
-  const [selected, setSelected] = React.useState(null);
+const [markers, setMarkers] = React.useState([]);
+const [selected, setSelected] = React.useState(null);
 
-  const onMapClick = React.useCallback((event) => {
+  const onMapClick = React.useCallback((event) => { // Asettaa markkerin valittuun pisteeseen
     setMarkers(current => [
       ...current, 
       {
         lat: event.latLng.lat(),
         lng: event.latLng.lng(),
         time: new Date(),
-    },
-  ]);
+      },
+    ]);
   }, [])
 
-  const mapRef = React.useRef();  
+  const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
-    mapRef.current = map; // tallennetaan kartta useRefiin
+    mapRef.current = map;
   }, []);
 
-<<<<<<< Updated upstream
-  const panTo = React.useCallback(({lat, lng}) => {
+  const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja zoomaa siihen
   mapRef.current.panTo({lat, lng});
   mapRef.current.setZoom(14);
-=======
-  const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja zoomaa siihen
-  mapRef.current.panTo({lat, lng}); // koordinaatit
-  mapRef.current.setZoom(16); // zoom 
->>>>>>> Stashed changes
    }, []);
 
   if (loadError) return "Virhe ladatessa karttaa";
   if (!isLoaded) return "Ladataan karttaa...";
 
 return <div>    
-
     <Search panTo={panTo} />
     <Locate panTo={panTo} />
-
     <GoogleMap 
     mapContainerStyle={mapContainerStyle}
     zoom={8}
@@ -89,48 +98,48 @@ return <div>
     >
       {markers.map(marker => (
       <Marker
-<<<<<<< Updated upstream
        key={marker.time.toISOString()}
-=======
-       key={marker.time.toISOString()}  
->>>>>>> Stashed changes
        position= { { lat: marker.lat, lng: marker.lng }}
        onClick={() =>{
         setSelected(marker);
        }}
        />))}
+
        {selected ? (
        <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => {
-        setSelected(null);
-       }}>
-        <div>
+        setSelected(null)}}>
+
+        <div> 
           <h2>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
+          <form onSubmit={addRegistry}>
+            <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
+            <input type="date" name='date' value={registry.date} onChange={inputChanged} /> 
+            <input type="submit" value="Tallenna" />
+          </form>
         </div>
        </InfoWindowF>): null}
     </GoogleMap>
   </div>;
 }
 
-function Locate({ panTo } ) {
+function Locate({ panTo } ) {  // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
   return (
-  <button className="locate" onClick={() => {
-  navigator.geolocation.getCurrentPosition((position) => {
-    panTo({
-      lat: position.coords.latitude,
-      lng: position.coords.longitude,
-    });
-  },
-  () => null
+    <button className="locate" onClick={() => {
+    navigator.geolocation.getCurrentPosition((position) => {
+      panTo({
+        lat: position.coords.latitude,
+        lng: position.coords.longitude,
+      });
+    }, () => null
   );
 }}>
-
   <img src="compass.svg" alt="compass - locate me" />
   </button>
 )}
 
 
-function Search( { panTo }) {
+function Search( { panTo }) { //Hakubaari 
   const {
     ready, 
     value, 
@@ -144,39 +153,38 @@ function Search( { panTo }) {
   });
 
   return (
-  <div className="search">
-    <Combobox 
-     onSelect={async (address) => 
-    {
+    <div className="search">
+      <Combobox 
+      onSelect={async (address) => {  
       setValue(address, false); 
       clearSuggestions()
+        try {
+          const results =  await getGeocode({ address });
+          const { lat, lng } = await getLatLng(results[0]);
+          panTo({ lat, lng });
+            } 
+          catch(error) {
+            console.log("error")
+          }
+        }}
+      >
 
-      try {
-        const results =  await getGeocode({ address });
-        const { lat, lng } = await getLatLng(results[0]);
-        panTo({ lat, lng });
-        } 
-        catch(error) {
-        console.log("error")
-      }
-    }}
-    >
       <ComboboxInput
-       value={value}
+        value={value}
         onChange={(e) => {
-      setValue(e.target.value);
-    }}
+          setValue(e.target.value);
+        }}
         disabled={!ready}
         placeholder="Syötä osoite"
       />
-  <ComboboxPopover>
-    <ComboboxList>
-    {status === "OK" && 
-    
-    data.map(( {id, description }) => (    <ComboboxOption key={id} value={description} />
-    ))}
-    </ComboboxList>
-  </ComboboxPopover>
+
+    <ComboboxPopover>
+        <ComboboxList>
+          {status === "OK" && 
+          data.map(( {id, description }) => 
+        (<ComboboxOption key={id} value={description} />))}
+       </ComboboxList>
+     </ComboboxPopover>
   </Combobox>
   </div>
   )
