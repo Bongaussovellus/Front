@@ -14,8 +14,7 @@ import '../Styles/mapStyles.css';
 
 
 
-const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
-const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
+
 
 const mapContainerStyle = {
   width: '100vw',
@@ -52,8 +51,8 @@ export default function Map() {
   }
 
   const {isLoaded, loadError} = useLoadScript ({
-    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
-    googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googlePlacesApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
     libraries: ["places"]
   });
 
