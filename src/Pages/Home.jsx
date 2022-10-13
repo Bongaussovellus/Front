@@ -33,8 +33,8 @@ const Home = () => {
       </div>
       {items.map((user) => { 
         return <div>
-          <h1>date: {user.spottings.spotting.date}</h1>
-          <h1>reknro: {user.spottings.spotting.numberplate}</h1>
+          <h1>date: {user.spottings.spot.date}</h1>
+          <h1>reknro: {user.spottings.spot.registernumber}</h1>
         </div>})}
     </div>
   );

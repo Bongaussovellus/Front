@@ -6,6 +6,7 @@ import {
   onAuthStateChanged,
 } from 'firebase/auth';
 import { auth } from '../service/firebase';
+import { getDatabase, ref, set } from "firebase/database";
 /*import { getDatabase} from "firebase/database";
 import firebase from '../service/firebase';
 import {doc, setDoc} from "firebase/firestore";
@@ -44,11 +45,28 @@ export const AuthContextProvider = ({ children }) => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       console.log('User', currentUser)
+      writeUserData(currentUser.uid);
     });
     return () => {
       unsubscribe();
     };
   }, []);
+
+  function writeUserData(userId) {
+    const database = getDatabase();
+    set(ref(database, 'users/' + userId), {
+      spottings: {
+        spot: {
+          registernumber: 'ABC-1',
+          location: {
+            lat: 60,
+            lng: 60,
+          },
+          date: '13.10.2022'
+        }
+      }
+    });
+  };
 
   return (
     <AuthContext.Provider value={{ googleSignIn, logOut, user }}>

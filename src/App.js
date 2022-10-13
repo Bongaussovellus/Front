@@ -60,11 +60,9 @@ function App() {
   }, []);*/
   
   //Lisätään käyttäjä GoogleUID:n perusteella Realtime Databasen users collectioniin.
-  /*function writeUserData(userId) {
+  function writeUserData(userId) {
     const database = getDatabase();
     set(ref(database, 'users/' + userId), {
-      username: 'testi',
-      email: 'email',
       bongaukset: {
         place: 'Mannerheimintie 50',
         reg: '10',
@@ -72,7 +70,7 @@ function App() {
         time: '20:00'
       }
     });
-  };*/
+  };
 
   const [user, setUser] = useState(null);
   const [value, setValue] = useState('one');
