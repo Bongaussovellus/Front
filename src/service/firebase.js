@@ -12,7 +12,7 @@ const firebaseConfig = {
   messagingSenderId: "587839363768",
   appId: "1:587839363768:web:037f19cc04440952c4724d",
   measurementId: "G-09S3L75TXC",
-  ndatabaseURL: "https://bongausprojekti.firebaseio.com"
+  databaseURL: "https://bongausprojekti-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
 // Initialize Firebase
