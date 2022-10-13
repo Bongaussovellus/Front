@@ -6,7 +6,6 @@ import DateFnsUtils from "@date-io/date-fns"
 import fiLocale from 'date-fns/locale/fi';
 import CreateIcon from "@mui/icons-material/Create"
 
-
 function AddRegistry() {
     
     const [spot, setValues] = useState ({

@@ -1,0 +1,23 @@
+h2,p {
+    color:black;
+}
+
+.Map {
+    margin-top: 1%;
+}
+.locate {
+    margin-bottom: 1%;
+    margin-left: 15px;
+}
+
+.ComboboxInput {
+    float: left;
+    margin-left: 35%;
+    height:34px;
+    margin-top: 3px;
+    border-radius: 10px;
+    width:500px;
+    background-color: #373737;
+  }
+  
+  
