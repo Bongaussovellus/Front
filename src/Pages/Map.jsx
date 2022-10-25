@@ -10,11 +10,12 @@ import {
           ComboboxOption,
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import '../Styles/mapStyles.css';
+import '../Styles/MapStyles.css';
 
 
 
-
+const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
+const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
 const mapContainerStyle = {
   width: '100vw',
@@ -51,8 +52,8 @@ export default function Map() {
   }
 
   const {isLoaded, loadError} = useLoadScript ({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googlePlacesApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     libraries: ["places"]
   });
 
@@ -108,7 +109,7 @@ return <div class='Map'>
           setSelected(null)}}>
 
         <div> 
-          <h2>Rekisterikilpi bongattu!</h2>
+          <h2 style={{color:'black'}}>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
@@ -177,6 +178,7 @@ function Search( { panTo }) { //Hakukenttä
         }}
         disabled={!ready}
         placeholder="Syötä osoite"
+        style={{color:'white'}}
       />
 
     <ComboboxPopover>

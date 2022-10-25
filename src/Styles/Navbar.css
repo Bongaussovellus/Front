@@ -2,7 +2,6 @@
 
 * {
     box-sizing: border-box;
-    color: #ffffff;
 }
 
 body {
@@ -17,7 +16,7 @@ h2 {
 
 .nav_links {
     list-style: none;
-    color: white;
+
 }
 
 .nav_links li{
@@ -27,6 +26,7 @@ h2 {
 }
 .nav_links li a{
     transition: all 0.3s ease 0s;
+    color: white;
 }
 
 ul .front a:hover{
