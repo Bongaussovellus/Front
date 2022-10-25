@@ -13,6 +13,7 @@ import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
 
 
+// API-avaimet väliaikaisesti tässä
 const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
 const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
@@ -21,6 +22,8 @@ const mapContainerStyle = {
   width: '100vw',
   height: '80vh',
 };
+
+// kartan keskitys
 const center = {
   lat: 60.169857,
   lng: 24.93837
@@ -51,6 +54,7 @@ export default function Map() {
     setValues([...registries, registry])
   }
 
+  // ladataan mapit ja places api:sta
   const {isLoaded, loadError} = useLoadScript ({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
@@ -63,10 +67,11 @@ export default function Map() {
     libraries: ["places"]
   });*/
 
+// luodaan markkerit sekä valinta-oliot
 const [markers, setMarkers] = React.useState([]);
 const [selected, setSelected] = React.useState(null);
 
-  const onMapClick = React.useCallback((event) => { // Asettaa markkerin valittuun pisteeseen
+  const onMapClick = React.useCallback((event) => { // Asettaa markkerin valittuun pisteeseen hakemalla koordinaatit
     setMarkers(current => [
       ...current, 
       {
@@ -83,8 +88,8 @@ const [selected, setSelected] = React.useState(null);
   }, []);
 
   const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja tarkentaa siihen
-  mapRef.current.panTo({lat, lng});
-  mapRef.current.setZoom(18);
+  mapRef.current.panTo({lat, lng}); // tarkentaa kartan kyseiseen sijaintiin
+  mapRef.current.setZoom(18); // zoomaa kyseiseen sijaintiin
    }, []);
 
   if (loadError) return "Virhe ladatessa karttaa";
@@ -109,9 +114,10 @@ return <div class='Map'>
         setSelected(marker);
        }}
        />))}
-
+        
        {selected ? (
-       <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => {
+        // Luo infoikkunan valitulle pisteelle, johon voi lisätä rekisterinumeron ja päivämäärän
+       <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => { 
           setSelected(null)}}>
 
         <div> 
