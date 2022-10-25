@@ -52,10 +52,10 @@ export default function Map() {
   }
 
   const {isLoaded, loadError} = useLoadScript ({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googlePlacesApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+    googleMapsApiKey: GOOGLE_MAPS_API_KEY,
+    googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     libraries: ["places"]
-  });*/
+  })
 
 const [markers, setMarkers] = React.useState([]);
 const [selected, setSelected] = React.useState(null);
