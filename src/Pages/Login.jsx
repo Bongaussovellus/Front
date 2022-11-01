@@ -30,10 +30,12 @@ const Login = () => {
 
   return (
     <div>
-      <h1 style={{marginTop:'50px'}}>Bongailusovellus</h1>
-      <h2 >Kirjaudu sisään</h2>
-      <div>
-        <h3>Pääset kirjaamaan bongauksiasi kirjautumalla sisään!</h3>
+      <h1 style={{marginTop:'50px'}}>Tervetuloa Bongailusovellukseen</h1>
+     
+      <div>  
+        
+        <h2> Bongaussovellus on ilmainen sovellus, jonka avulla voit pitää kirjaa rekisterikilpibongailuistasi!</h2>
+        <h3>Kirjaudu ilmaiseksi sisään Google-tunnuksellasi ja ala bongailemaan !</h3>
         <GoogleButton class="button" onClick={handleGoogleSignIn} />
       </div>
     </div>
