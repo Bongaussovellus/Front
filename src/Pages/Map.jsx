@@ -11,6 +11,8 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
+import { getDatabase, push, ref, set } from 'firebase/database';
+import { UserAuth } from '../Context/AuthContext';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -37,6 +39,7 @@ const libraries = ["places"];
 
 export default function Map() {
 
+  const { user } = UserAuth();
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
@@ -55,7 +58,19 @@ export default function Map() {
   const addRegistry = (e) => {
     e.preventDefault()
     setValues([...registries, registry])
+    writeUserData();
   }
+  // Lisätään uusi bongaus databaseen kirjautuneen käyttäjän ja uniikin ID:n alle
+  function writeUserData() {
+    const database = getDatabase();
+    const spotListRef = ref(database, 'users/' + user.uid);
+    const newSpotRef = push(spotListRef);
+    set(newSpotRef, {
+      registernumber: registry.numberplate,
+      location: registry.location,
+      date: registry.date
+    });
+  };
 
   // ladataan kartat ja places api:sta
   const {isLoaded, loadError} = useLoadScript ({
