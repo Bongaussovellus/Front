@@ -29,16 +29,6 @@ const Home = () => {
     console.error(error);
   });
   
-  /*useEffect(() => {
-    const itemsRef = ref(db, 'users/');
-    onValue(itemsRef, snapshot => {
-      const data = snapshot.val();
-      const mappedItems = data ? Object.keys(data).map(key => ({key, ...data[key]})) : [];
-      setItems(mappedItems); 
-      console.log(mappedItems);   
-    });
-  }, []);*/
-
   return (
     <div>
       <div class="title">

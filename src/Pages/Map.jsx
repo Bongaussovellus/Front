@@ -10,7 +10,7 @@ import {
           ComboboxOption,
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
-import '../Styles/MapStyles.css';
+import '../Styles/mapStyles.css';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -37,11 +37,13 @@ const libraries = ["places"];
 
 export default function Map() {
 
+  // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
     date: new Date(),
     location: ''
   })
+  
   
   const [registries, setValues] = useState([])
 
@@ -49,17 +51,24 @@ export default function Map() {
     setValue({...registry, [e.target.name]: e.target.value})
   }
 
+  // asetetaan arvot olioihin
   const addRegistry = (e) => {
     e.preventDefault()
     setValues([...registries, registry])
   }
 
-  // ladataan mapit ja places api:sta
+  // ladataan kartat ja places api:sta
   const {isLoaded, loadError} = useLoadScript ({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
     libraries: ["places"]
-  })
+  });
+
+  /*const {isLoaded, loadError} = useLoadScript ({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+    googlePlacesApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
+    libraries: ["places"]
+  });*/
 
 // luodaan markkerit sekä valinta-oliot
 const [markers, setMarkers] = React.useState([]);
@@ -115,7 +124,7 @@ return <div class='Map'>
           setSelected(null)}}>
 
         <div> 
-          <h2 style={{color:'black'}}>Rekisterikilpi bongattu!</h2>
+          <h2>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
@@ -158,6 +167,7 @@ function Search( { panTo }) { //Hakukenttä
     }
   );
 
+  console.log(getLatLng)
   return (
     <div className="search">
       <Combobox 
@@ -184,7 +194,6 @@ function Search( { panTo }) { //Hakukenttä
         }}
         disabled={!ready}
         placeholder="Syötä osoite"
-        style={{color:'white'}}
       />
 
     <ComboboxPopover>
@@ -197,4 +206,6 @@ function Search( { panTo }) { //Hakukenttä
   </Combobox>
   </div>
   )
+
+ 
 }
