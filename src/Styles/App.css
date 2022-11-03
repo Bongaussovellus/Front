@@ -5,10 +5,16 @@ h1,h3,h2 {
     .title {
     margin-top: 12%;
     }
-    .Avatar {
+
+    .frontpage {
+        margin-top: 8%;
+
+    }
+    .Img {
     border-radius: 50%;
     display: block;
     margin-left: 48%;
+    margin-bottom: 3%;
     }
     
     .button {

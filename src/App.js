@@ -102,7 +102,7 @@ function App() {
               </Protected>
             }
           />  
-          <Route path='/home' element={
+          <Route path='/Home' element={
               <Protected>
                 <Home />
               </Protected>

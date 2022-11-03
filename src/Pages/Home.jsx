@@ -3,7 +3,6 @@ import { UserAuth } from '../Context/AuthContext';
 import '../Styles/App.css'
 import { getDatabase, ref, push, set, onValue, child, get } from "firebase/database";
 import { useEffect, useState } from "react";
-import App from "../App";
 
 
 
@@ -32,7 +31,7 @@ const Home = () => {
   return (
     <div>
       <div class="title">
-      <img src={user.photoURL}  class="Avatar"/>
+      <img src={user.photoURL}  class="Img"/>
         <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan</h3>
       </div>
       {items.map((user) => { 

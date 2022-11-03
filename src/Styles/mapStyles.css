@@ -18,7 +18,27 @@ div{
     margin-top: 3px;
     border-radius: 10px;
     width:500px;
-    background-color: #373737;
+    background-color: #1e1e1e;
+    border-style:solid;
+    border-color: #181818;
+    text-transform: lowercase;
+    text-align: center;
   }
+  .locate {
+    padding:9px 25px;
+    background-color: rgb(28, 28, 29);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+    color: white;
+    margin-right: 1%;
+}
+
+.locate:hover {
+    background-color: rgba(17, 17, 17, 0.8);
+    color: rgb(213, 213, 213);
+}
+
   
   

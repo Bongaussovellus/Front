@@ -124,7 +124,7 @@ return <div class='Map'>
           setSelected(null)}}>
 
         <div> 
-          <h2>Rekisterikilpi bongattu!</h2>
+          <h2 style={{color:"black"}}>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
@@ -188,6 +188,7 @@ function Search( { panTo }) { //Hakukenttä
 
       <ComboboxInput
         class="ComboboxInput"
+        style={{color:"white"}}
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
