@@ -1,81 +1,37 @@
+* {
+    margin-inline: auto;
+    min-width:90% 1024px;
+}
 h1,h3,h2 {
     text-align: center;
     color: white;
     }
-    .title {
+.title {
     margin-top: 12%;
     }
 
-    .frontpage {
-        margin-top: 8%;
+.frontpage {
+    margin-top: 8%;
 
     }
-    .Img {
+.Img {
     border-radius: 50%;
     display: block;
     margin-left: 48%;
     margin-bottom: 3%;
     }
     
-    .button {
-    display: block;
+.logos {
+        color: white;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-weight: bold;
+        font-size:x-large;
+        line-height: 80px;
+        margin-top: 15%;
+    
+    }
+.log {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 3%;
-    }
-    
-    
-    .button-38 {
-    background-color: #FFFFFF;
-    border: 0;
-    border-radius: .5rem;
-    box-sizing: border-box;
-    color: #111827;
-    font-family: "Inter var",ui-sans-serif,system-ui,-apple-system,system-ui,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
-    font-size: .875rem;
-    font-weight: 600;
-    line-height: 1.25rem;
-    padding: .75rem 1rem;
-    text-align: center;
-    text-decoration: none #D1D5DB solid;
-    text-decoration-thickness: auto;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    cursor: pointer;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 15px;
-    }
-    
-    .button-38:hover {
-    background-color: rgb(249,250,251);
-    }
-    
-    .button-38:focus {
-    outline: 2px solid transparent;
-    outline-offset: 2px;
-    }
-    
-    .button-38:focus-visible {
-    box-shadow: none;
-    }
-    h1 {
-    text-align: center;
-    }
-    
-    .Paper {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    margin-top: 3%;
-    }
-    
-    .Link {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 3%;
-    }
+}
