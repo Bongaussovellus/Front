@@ -21,7 +21,7 @@ const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
 
 const mapContainerStyle = {
-  width: '100vw',
+  minWidth: '95%',
   height: '80vh',
 };
 
@@ -113,9 +113,8 @@ const [selected, setSelected] = React.useState(null);
   if (loadError) return "Virhe ladatessa karttaa";
   if (!isLoaded) return "Ladataan karttaa...";
 
-return <div class='Map'>    
-    <Search panTo={panTo} />
-    <Locate panTo={panTo} />
+return <div class='Map'>  
+    <Search panTo={panTo} />  
     <GoogleMap 
     mapContainerStyle={mapContainerStyle}
     zoom={8}
@@ -124,6 +123,9 @@ return <div class='Map'>
     onClick={onMapClick}
     onLoad={onMapLoad }
     >
+    <Locate panTo={panTo} />
+
+      
       {markers.map(marker => (
       <Marker
        key={marker.time.toISOString()}
@@ -152,7 +154,7 @@ return <div class='Map'>
   </div>;
 }
 
-function Locate({ panTo } ) {  // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
+function Locate({ panTo } ) { // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
   return (
     <button className="locate" onClick={() => {
       navigator.geolocation.getCurrentPosition((position) => {

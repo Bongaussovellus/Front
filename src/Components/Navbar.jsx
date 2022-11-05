@@ -1,5 +1,4 @@
-import {useRef, React} from 'react';
-import {FaBars, FaTimes} from "react-icons/fa";
+import {React} from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/Navbar.css';
 
@@ -18,17 +17,16 @@ function Navbar() {
   return (
     <body>
       <header>
-        <label className="logo">
-          Bongailusovellus
-        </label>
           <nav>
+          <a className="logo">
+          Bongailusovellus
+        </a>
             <ul>
               <li className="front"><a href="/FrontPage">Etusivu</a></li>
               <li className="tili"><a href="/Home">Tili</a></li>
               <li className="kartta"><a href="/Map">Kartta</a></li>
             </ul>
-        </nav>
-        {user?.displayName ? (
+            {user?.displayName ? (
           <div>
             <img src={user.photoURL} alt="Avatar" class="Avatar"/>
             <button onClick={handleSignOut} className="logout">Logout</button>
@@ -39,6 +37,7 @@ function Navbar() {
             <button onClick={handleSignOut} className="logout">Logout</button>
           </div>
            )}
+        </nav>
     </header>
     </body>
   );

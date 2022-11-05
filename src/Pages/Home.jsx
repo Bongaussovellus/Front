@@ -29,7 +29,7 @@ const Home = () => {
   });
   
   return (
-    <div>
+    <div class="home">
       <div class="title">
       <img src={user.photoURL}  class="Img"/>
         <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan</h3>

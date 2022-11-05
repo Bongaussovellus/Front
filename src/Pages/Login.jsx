@@ -29,12 +29,12 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div>
-      <h1 style={{marginTop:'50px'}}>Bongailusovellus</h1>
-      <h2 >Kirjaudu sisään</h2>
+    <div className='log'>
+      <h1 className='logos'>Bongailusovellus</h1>
+      <h2  style={{marginTop:'5%'}} >Kirjaudu sisään</h2>
       <div>
         <h3>Pääset kirjaamaan bongauksiasi kirjautumalla sisään!</h3>
-        <GoogleButton class="button" onClick={handleGoogleSignIn} />
+        <GoogleButton style={{marginLeft:"auto", marginRight:"auto", marginTop:"3%"}} className="GoogleButton" onClick={handleGoogleSignIn} />
       </div>
     </div>
   );

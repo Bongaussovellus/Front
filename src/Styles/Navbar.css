@@ -12,15 +12,14 @@ body {
     background-color: rgb(23, 23, 23);
     height:100%;
 }
-
-header {
+nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 30px;
     background-color: rgb(22, 22, 24);
     box-shadow: 0 5px 2px -2px rgb(13, 13, 13);
-    height:80px
+    min-height:70px
 }
 .logo {
     color: white;
@@ -29,10 +28,12 @@ header {
     font-weight: bold;
     font-size:x-large;
     padding: 0 100px;
-    line-height: 80px;
-    margin-left: -7%;
-    margin-right: -13%;
+    line-height: 70px;
+    margin-left: -4%;
+}
 
+nav ul {
+    margin-left: -10%;
 }
 
 nav ul li {
@@ -49,8 +50,6 @@ nav ul .front a:hover{
     color:rgb(104, 205, 10);
     
 }
-
-
 nav ul .tili a:hover{
     color:rgb(241, 233, 13);
 }

@@ -4,39 +4,42 @@ div{
 }
 
 .Map {
-    margin-top: 1%;
-}
-.locate {
-    margin-bottom: 1%;
-    margin-left: 15px;
+    margin-top: 10px;
+    display: grid;
+    position: relative;
 }
 
 .ComboboxInput {
-    float: left;
-    margin-left: 35%;
     height:34px;
-    margin-top: 3px;
     border-radius: 10px;
-    width:500px;
+    min-width:500px;
+    max-width:500px;
     background-color: #1e1e1e;
     border-style:solid;
     border-color: #181818;
     text-transform: lowercase;
     text-align: center;
+    display:block;
+    margin:0 auto 10px;
+
+
   }
-  .locate {
+.locate {
     padding:9px 25px;
-    background-color: rgb(28, 28, 29);
+    background-color: rgba(8, 8, 8, 0.525);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     color: white;
-    margin-right: 1%;
+    position: absolute;
+    margin: 15px;
+    margin-left:min(47%);
+
 }
 
 .locate:hover {
-    background-color: rgba(17, 17, 17, 0.8);
+    background-color: rgba(17, 17, 17, 0.966);
     color: rgb(213, 213, 213);
 }
 

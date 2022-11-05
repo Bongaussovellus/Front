@@ -1,6 +1,7 @@
 * {
     margin-inline: auto;
     min-width:90% 1024px;
+
 }
 h1,h3,h2 {
     text-align: center;
@@ -10,7 +11,7 @@ h1,h3,h2 {
     margin-top: 12%;
     }
 
-.frontpage {
+.frontpage, .home {
     margin-top: 8%;
 
     }

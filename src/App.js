@@ -6,7 +6,6 @@ import Navbar from './Components/Navbar';
 import Protected from './Components/Protected';
 import FrontPage from './Pages/FrontPage';
 import { AuthContextProvider } from './Context/AuthContext';
-
 import { Route, Routes } from 'react-router-dom';
 import React from 'react';
 import './Styles/App.css';
