@@ -29,6 +29,7 @@ const Login = () => {
   }, [user]);
 
   return (
+<<<<<<< HEAD
     <div>
       <h1 style={{marginTop:'50px'}}>Tervetuloa Bongailusovellukseen</h1>
      
@@ -37,6 +38,14 @@ const Login = () => {
         <h2> Bongaussovellus on ilmainen sovellus, jonka avulla voit pitää kirjaa rekisterikilpibongailuistasi!</h2>
         <h3>Kirjaudu ilmaiseksi sisään Google-tunnuksellasi ja ala bongailemaan !</h3>
         <GoogleButton class="button" onClick={handleGoogleSignIn} />
+=======
+    <div className='log'>
+      <h1 className='logos'>Bongailusovellus</h1>
+      <h2  style={{marginTop:'5%'}} >Kirjaudu sisään</h2>
+      <div>
+        <h3>Pääset kirjaamaan bongauksiasi kirjautumalla sisään!</h3>
+        <GoogleButton style={{marginLeft:"auto", marginRight:"auto", marginTop:"3%"}} className="GoogleButton" onClick={handleGoogleSignIn} />
+>>>>>>> 553923393edb950d629b08c2eaec1b2666d99efb
       </div>
     </div>
   );

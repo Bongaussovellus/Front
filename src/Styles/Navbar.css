@@ -2,87 +2,90 @@
 
 * {
     box-sizing: border-box;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-    background-color: rgb(56, 56, 56);
+    background-color: rgb(23, 23, 23);
     height:100%;
 }
-h2 {
-    margin-right: auto;
-    color: white;
-    padding-left: 20px;
-}
-
-.nav_links {
-    list-style: none;
-
-}
-
-.nav_links li{
-    display: inline-block;
-    padding:0px 20px ;
- 
-}
-.nav_links li a{
-    transition: all 0.3s ease 0s;
-    color: white;
-}
-
-ul .front a:hover{
-    color:rgb(63, 130, 0)
-}
-
-
-ul .tili a:hover{
-    color:rgb(219, 184, 9)
-}
-
-ul .kartta a:hover{
-    color:rgb(134, 20, 0)
-}
-
-
-.cta {
-
-}
-
-header {
+nav {
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
-    background-color: rgb(36, 39, 39);
-    box-shadow: 0 5px 2px -2px rgb(45, 52, 55);
-    height: 70px;
+    padding: 30px;
+    background-color: rgb(22, 22, 24);
+    box-shadow: 0 5px 2px -2px rgb(13, 13, 13);
+    min-height:70px
+}
+.logo {
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:x-large;
+    padding: 0 100px;
+    line-height: 70px;
+    margin-left: -4%;
+}
+
+nav ul {
+    margin-left: -10%;
+}
+
+nav ul li {
+    padding:0px 20px ;
+    display:inline-block;
+
+}
+nav ul li a{
+    transition: all 0.5s ease 0.2s;
+    color: white;
+}
+
+nav ul .front a:hover{
+    color:rgb(104, 205, 10);
+    
+}
+nav ul .tili a:hover{
+    color:rgb(241, 233, 13);
+}
+
+nav ul .kartta a:hover{
+    color:rgb(224, 48, 17);
 }
 
 li, a, button {
     font-family : "Montserrat", sans-serif;
     font-weight: 500;
     font-size: 16px;
-    text-decoration: none;
 }
 
-button {
+.logout {
     padding:9px 25px;
-    background-color: rgb(49, 96, 150,1);
+    background-color: rgb(32, 34, 37);
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
     color: white;
-    margin-right: 1%;
+    float: right;
+    margin-top: 5%;
+
 }
 
-button:hover {
-    background-color: rgba(113, 18, 18, 0.8);
+.logout:hover {
+    background-color: rgba(24, 24, 24, 0.8);
+    color: darkred;
 }
 
 .Avatar {
     border-radius: 50%;
-    display: block;
-    margin-right: 15px;
     width: 50px;
     height: 50px;
-    margin-top: 2.5px;
-  }
+    margin-right:10px;
+    margin-top: 3px;
+}

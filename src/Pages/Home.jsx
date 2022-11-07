@@ -3,7 +3,6 @@ import { UserAuth } from '../Context/AuthContext';
 import '../Styles/App.css'
 import { getDatabase, ref, push, set, onValue, child, get } from "firebase/database";
 import { useEffect, useState } from "react";
-import App from "../App";
 
 
 
@@ -30,15 +29,15 @@ const Home = () => {
   });
   
   return (
-    <div>
+    <div class="home">
       <div class="title">
-      <img src={user.photoURL}  class="Avatar"/>
+      <img src={user.photoURL}  class="Img"/>
         <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan</h3>
       </div>
       {items.map((user) => { 
         return <div>
-          <h1>date: {user.spot.date}</h1>
-          <h1>reknro: {user.spot.registernumber}</h1>
+          <h1>date: {user.date}</h1>
+          <h1>reknro: {user.registernumber}</h1>
         </div>})}
     </div>
   );

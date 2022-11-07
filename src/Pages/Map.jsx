@@ -11,6 +11,8 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
+import { getDatabase, push, ref, set } from 'firebase/database';
+import { UserAuth } from '../Context/AuthContext';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -19,7 +21,7 @@ const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
 
 const mapContainerStyle = {
-  width: '100vw',
+  minWidth: '95%',
   height: '80vh',
 };
 
@@ -37,6 +39,7 @@ const libraries = ["places"];
 
 export default function Map() {
 
+  const { user } = UserAuth();
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
@@ -55,7 +58,19 @@ export default function Map() {
   const addRegistry = (e) => {
     e.preventDefault()
     setValues([...registries, registry])
+    writeUserData();
   }
+  // Lisätään uusi bongaus databaseen kirjautuneen käyttäjän ja uniikin ID:n alle
+  function writeUserData() {
+    const database = getDatabase();
+    const spotListRef = ref(database, 'users/' + user.uid);
+    const newSpotRef = push(spotListRef);
+    set(newSpotRef, {
+      registernumber: registry.numberplate,
+      location: registry.location,
+      date: registry.date
+    });
+  };
 
   // ladataan kartat ja places api:sta
   const {isLoaded, loadError} = useLoadScript ({
@@ -98,9 +113,8 @@ const [selected, setSelected] = React.useState(null);
   if (loadError) return "Virhe ladatessa karttaa";
   if (!isLoaded) return "Ladataan karttaa...";
 
-return <div class='Map'>    
-    <Search panTo={panTo} />
-    <Locate panTo={panTo} />
+return <div class='Map'>  
+    <Search panTo={panTo} />  
     <GoogleMap 
     mapContainerStyle={mapContainerStyle}
     zoom={8}
@@ -109,6 +123,9 @@ return <div class='Map'>
     onClick={onMapClick}
     onLoad={onMapLoad }
     >
+    <Locate panTo={panTo} />
+
+      
       {markers.map(marker => (
       <Marker
        key={marker.time.toISOString()}
@@ -124,7 +141,7 @@ return <div class='Map'>
           setSelected(null)}}>
 
         <div> 
-          <h2>Rekisterikilpi bongattu!</h2>
+          <h2 style={{color:"black"}}>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
@@ -137,7 +154,7 @@ return <div class='Map'>
   </div>;
 }
 
-function Locate({ panTo } ) {  // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
+function Locate({ panTo } ) { // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
   return (
     <button className="locate" onClick={() => {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -188,6 +205,7 @@ function Search( { panTo }) { //Hakukenttä
 
       <ComboboxInput
         class="ComboboxInput"
+        style={{color:"white"}}
         value={value}
         onChange={(e) => {
           setValue(e.target.value);
