@@ -1,3 +1,4 @@
+
 import {React} from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/Navbar.css';
@@ -15,31 +16,31 @@ function Navbar() {
   }
 
   return (
-    <body>
-      <header>
-          <nav>
-          <a className="logo">
-          Bongailusovellus
-        </a>
-            <ul>
-              <li className="front"><a href="/FrontPage">Etusivu</a></li>
-              <li className="tili"><a href="/Home">Tili</a></li>
-              <li className="kartta"><a href="/Map">Kartta</a></li>
-            </ul>
-            {user?.displayName ? (
-          <div>
-            <img src={user.photoURL} alt="Avatar" class="Avatar"/>
-            <button onClick={handleSignOut} className="logout">Logout</button>
-          </div>
-            ) : (
-          <div>
-            <img src={user.photoURL} alt="Avatar" class="Avatar"/>
-            <button onClick={handleSignOut} className="logout">Logout</button>
-          </div>
-           )}
-        </nav>
+<body>
+  <header>
+    <nav>
+        <input type="checkbox" id="nav-toggle"/>
+        <div class="logo">Bongaussovellus</div>
+       <ul class="links">
+           <li><a href="/FrontPage">Etusivu</a></li>
+           <li><a href="/Home">Tili</a></li>
+           <li><a href="/Map">Kartta</a></li>
+           <img src={user.photoURL} alt="Avatar" class="Avatar"/>
+          <button onClick={handleSignOut} className="logout">Logout</button>
+       </ul>
+       <label for="nav-toggle" class="icon-burger">
+           <div class="line"></div>
+           <div class="line"></div>
+           <div class="line"></div>
+       </label>
+    </nav>
+    <label for="nav-toggle" class="icon-burger">
+        <div class="line"></div>
+        <div class="line"></div>
+        <div class="line"></div>
+    </label>
     </header>
-    </body>
+</body>
   );
 };
 

@@ -124,7 +124,6 @@ return <div class='Map'>
     onLoad={onMapLoad }
     >
     <Locate panTo={panTo} />
-
       
       {markers.map(marker => (
       <Marker

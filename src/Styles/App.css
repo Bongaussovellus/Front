@@ -12,13 +12,13 @@ h1,h3,h2 {
     }
 
 .frontpage, .home {
-    margin-top: 8%;
+    margin-top: 15%;
 
     }
 .Img {
     border-radius: 50%;
     display: block;
-    margin-left: 48%;
+    margin-inline: auto;
     margin-bottom: 3%;
     }
     

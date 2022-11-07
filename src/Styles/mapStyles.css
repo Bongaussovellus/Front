@@ -4,13 +4,13 @@ div{
 }
 
 .Map {
-    margin-top: 10px;
+    margin-top: 85px;
     display: grid;
     position: relative;
 }
 
 .ComboboxInput {
-    height:34px;
+    height:28px;
     border-radius: 10px;
     min-width:500px;
     max-width:500px;
@@ -44,4 +44,6 @@ div{
 }
 
   
-  
+@media screen and (max-width: 768px) {
+     
+}
