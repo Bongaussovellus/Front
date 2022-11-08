@@ -9,6 +9,7 @@ const Login = () => {
   const navigate = useNavigate();
   const [addUser, setAddUser] = useState(null);
 
+  //Google-tilille kirjautuminen 
   const handleGoogleSignIn = async () => {
     try {
       await googleSignIn();

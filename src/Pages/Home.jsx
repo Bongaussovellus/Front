@@ -29,10 +29,10 @@ const Home = () => {
   });
   
   return (
-    <div class="home">
+    <div class="home" content="width=device-width, initial-scale=1.0">
       <div class="title">
       <img src={user.photoURL}  class="Img"/>
-        <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan</h3>
+        <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan </h3>
       </div>
       {items.map((user) => { 
         return <div>

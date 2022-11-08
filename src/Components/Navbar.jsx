@@ -20,12 +20,12 @@ function Navbar() {
   <header>
     <nav>
         <input type="checkbox" id="nav-toggle"/>
-        <div class="logo">Bongaussovellus</div>
+        <div class="logo">SPOT<a className="it" >it</a></div>
        <ul class="links">
            <li><a href="/FrontPage">Etusivu</a></li>
            <li><a href="/Home">Tili</a></li>
            <li><a href="/Map">Kartta</a></li>
-           <img src={user.photoURL} alt="Avatar" class="Avatar"/>
+           <a href="/Home" className='LinkAvatar'><img src={user.photoURL}  class="Avatar"/></a>
           <button onClick={handleSignOut} className="logout">Logout</button>
        </ul>
        <label for="nav-toggle" class="icon-burger">

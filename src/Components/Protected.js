@@ -4,6 +4,7 @@ import { UserAuth } from '../Context/AuthContext';
 
 const Protected = ({ children }) => {
   const { user } = UserAuth();
+  //Tarkistaa onko käyttäjä kirjautunut sisään, jos ei niin ohjaa Login-sivulle
   if (!user) {
     return <Navigate to='/' />;
   }

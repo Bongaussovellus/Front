@@ -17,15 +17,18 @@ nav {
     padding: 0 5%;
 
 }
+ .it {
+    color:rgb(255, 0, 0);
+    margin-left:3px;
+ }
 nav .logo { 
     float: left;
     width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
-    font-size: 24px;
+    font-size: 35px;
     color: #fff;
-    text-transform: uppercase;
 }
 nav .links {
     padding: 0;
@@ -38,6 +41,7 @@ nav .links {
 }
 nav .links li {
     list-style: none;
+    text-transform: uppercase;
 }
 nav .links a {
     display: block;
@@ -68,12 +72,12 @@ nav .links a:hover::before {
     transform: scaleX(1);
     color: white;
 }
-
 .logout {
     padding:9px 25px;
     font-size: 20px;
-    background-color: rgb(29, 29, 29);
-    border: none;
+    background-color: rgb(21, 21, 21);
+    border: solid;
+    border-color: black;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease 0s;
@@ -130,18 +134,19 @@ nav .icon-burger .line {
         width: auto;
         height: auto;
         flex-direction: column;
-        justify-content: space-evenly;
-        background-color: rgba(0, 0, 0, .8);
+        justify-content:flex-start;
+        background-color: rgba(0, 0, 0, 0.887);
         overflow: hidden;
         transition: all .5s ease-in-out;
     }
 
+    nav .links li {
+        margin-top: 7%;
+    }
     .Avatar {
        visibility: hidden;
     }
-    .logout {
-        margin-top: -20%;
-    }
+
     nav .links a {
         font-size: 20px;
     }
@@ -156,6 +161,7 @@ nav .icon-burger .line {
     }
     nav :checked ~ .icon-burger .line:nth-child(3) {
         transform: translateY(-10px) rotate(-225deg);
+        background-color: red;
     }
     nav :checked ~ .icon-burger .line:nth-child(2) {
         opacity: 0;

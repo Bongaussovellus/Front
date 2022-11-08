@@ -7,12 +7,15 @@ h1,h3,h2 {
     text-align: center;
     color: white;
     }
+h1 {
+    font-size: 30px;
+}
 .title {
     margin-top: 12%;
     }
 
 .frontpage, .home {
-    margin-top: 15%;
+    margin-top: min(15%);
 
     }
 .Img {
