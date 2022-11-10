@@ -23,7 +23,7 @@ function Navbar() {
         <div class="logo">SPOT<a className="it" >it</a></div>
        <ul class="links">
            <li><a href="/FrontPage">Etusivu</a></li>
-           <li><a href="/Home">Tili</a></li>
+           <li><a href="/Home">Bongaukset</a></li>
            <li><a href="/Map">Kartta</a></li>
            <a href="/Home" className='LinkAvatar'><img src={user.photoURL}  class="Avatar"/></a>
           <button onClick={handleSignOut} className="logout">Logout</button>

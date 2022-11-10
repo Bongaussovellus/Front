@@ -1,10 +1,10 @@
 import React from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/App.css'
-import { getDatabase, ref, push, set, onValue, child, get, remove } from "firebase/database";
+import { getDatabase, ref, child, get, remove } from "firebase/database";
 import { useState } from "react";
-import "ag-grid-community/styles/ag-grid.css";
-import "ag-grid-community/styles/ag-theme-material.css";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 
 
@@ -37,6 +37,13 @@ const Home = () => {
     alert("Bongaus poistettu");
   }
 
+  const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+  
+
   /*return (
     <div class="home" content="width=device-width, initial-scale=1.0">
       <div class="title">
@@ -53,13 +60,17 @@ const Home = () => {
 };*/
 
 return (
-  <TableContainer component={Paper}>
+  <div class="home" >
+  <h1>BONGAUKSET</h1>
+  <ThemeProvider theme={darkTheme}>
+  <CssBaseline />
+  <TableContainer component={Paper} className="Table">
   <Table  >
     <TableHead>
       <TableRow>
-        <TableCell>Numberplate</TableCell>
-        <TableCell>Date</TableCell>
-        <TableCell>Location</TableCell>
+        <TableCell>Rekisterinumero</TableCell>
+        <TableCell>Päivä</TableCell>
+        <TableCell>Osoite</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -74,13 +85,15 @@ return (
           <TableCell>{user.location}</TableCell>
           <TableCell>
           <Button variant='outlined'> Edit </Button>
-            <Button variant='outlined' color='error' onClick={() => deleteItem(user.key)}> Delete </Button>
+          <Button variant='outlined' color='error' onClick={() => deleteItem(user.key)}> Delete </Button>
           </TableCell>
         </TableRow>
       ))}
     </TableBody>
   </Table>
 </TableContainer>
+</ThemeProvider>
+</div>
 );
 }
 export default Home
