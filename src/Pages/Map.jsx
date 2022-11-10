@@ -1,7 +1,7 @@
 import {GoogleMap, useLoadScript, Marker, InfoWindowF,} from '@react-google-maps/api';
 import React, { useState } from 'react';
 import { formatRelative } from "date-fns";
-import usePlacesAutocomplete, {getGeocode,getLatLng,} from "use-places-autocomplete";
+import usePlacesAutocomplete, {getGeocode,getLatLng} from "use-places-autocomplete";
 import {
           Combobox,
           ComboboxInput,
@@ -42,11 +42,13 @@ const libraries = ["places"];
 
 export default function Map() {
 
+  const [address, setAddress] = useState('');
   const { user } = UserAuth();
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
-    date: new Date()
+    date: new Date(),
+    location: address
   })
   
   const [location, setLocation] = useState({
@@ -67,14 +69,23 @@ export default function Map() {
     console.log(registry, registries)
 
   }
+  // Haetaan kartalta klikatun markerin osoite
+  const getAddress = () => {
+    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${GOOGLE_MAPS_API_KEY}`)
+      .then(response => response.json())
+      .then(address => setAddress(address.results[1].formatted_address));
+   }
+
+
   // Lisätään uusi bongaus databaseen kirjautuneen käyttäjän ja uniikin ID:n alle
   function writeUserData() {
     const database = getDatabase();
     const spotListRef = ref(database, 'users/' + user.uid);
     const newSpotRef = push(spotListRef);
+    getAddress();
     set(newSpotRef, {
       registernumber: registry.numberplate,
-      location: location,
+      location: address,
       date: registry.date
     });
   };
