@@ -2,17 +2,18 @@ import React from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/App.css'
 import { getDatabase, ref, push, set, onValue, child, get } from "firebase/database";
-import { useEffect, useState } from "react";
-
-
-
+import { useState } from "react";
+import "ag-grid-community/styles/ag-grid.css";
+import "ag-grid-community/styles/ag-theme-material.css";
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 
 
 const Home = () => {
   const { user } = UserAuth();
   const db = getDatabase();
   const [items, setItems] = useState([]);
-  
+
+
   // HAKEE KÄYTTÄJÄN UID PERUSTEELLA TIEDOT BONGAUKSISTA
   const dbRef = ref(getDatabase());
   get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
@@ -28,7 +29,7 @@ const Home = () => {
     console.error(error);
   });
   
-  return (
+  /*return (
     <div class="home" content="width=device-width, initial-scale=1.0">
       <div class="title">
       <img src={user.photoURL}  class="Img"/>
@@ -41,6 +42,31 @@ const Home = () => {
         </div>})}
     </div>
   );
-};
+};*/
 
-export default Home;
+return (
+  <TableContainer component={Paper}>
+  <Table>
+    <TableHead>
+      <TableRow>
+        <TableCell>Numberplate</TableCell>
+        <TableCell>Date</TableCell>
+      </TableRow>
+    </TableHead>
+    <TableBody>
+      {items.map((user) => (
+        <TableRow
+          key={user.registernumber}
+        >
+          <TableCell >
+            {user.registernumber}
+          </TableCell>
+          <TableCell>{user.date}</TableCell>
+        </TableRow>
+      ))}
+    </TableBody>
+  </Table>
+</TableContainer>
+);
+}
+export default Home

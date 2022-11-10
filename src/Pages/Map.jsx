@@ -43,11 +43,13 @@ export default function Map() {
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
-    date: new Date(),
-    location: ''
+    date: new Date()
   })
   
-  
+  const [location, setLocation] = useState({
+    lat: 0,
+    lng: 0
+  })
   const [registries, setValues] = useState([])
 
   const inputChanged = (e) => {
@@ -57,8 +59,10 @@ export default function Map() {
   // asetetaan arvot olioihin
   const addRegistry = (e) => {
     e.preventDefault()
-    setValues([...registries, registry])
+    setValues([...registries,registry])
     writeUserData();
+    console.log(registry, registries)
+
   }
   // Lisätään uusi bongaus databaseen kirjautuneen käyttäjän ja uniikin ID:n alle
   function writeUserData() {
@@ -67,7 +71,7 @@ export default function Map() {
     const newSpotRef = push(spotListRef);
     set(newSpotRef, {
       registernumber: registry.numberplate,
-      location: registry.location,
+      location: location,
       date: registry.date
     });
   };
@@ -98,6 +102,10 @@ const [selected, setSelected] = React.useState(null);
         time: new Date(),
       },
     ]);
+    setLocation( {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng()
+    },)
   }, [])
 
   const mapRef = React.useRef();
