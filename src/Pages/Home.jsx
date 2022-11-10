@@ -5,7 +5,7 @@ import { getDatabase, ref, push, set, onValue, child, get } from "firebase/datab
 import { useState } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 
 
 const Home = () => {
@@ -62,6 +62,10 @@ return (
             {user.registernumber}
           </TableCell>
           <TableCell>{user.date}</TableCell>
+          <TableCell>
+          <Button variant='outlined'> Edit </Button>
+            <Button variant='outlined' color='error'> Delete </Button>
+          </TableCell>
         </TableRow>
       ))}
     </TableBody>
