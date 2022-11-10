@@ -54,11 +54,12 @@ const Home = () => {
 
 return (
   <TableContainer component={Paper}>
-  <Table>
+  <Table  >
     <TableHead>
       <TableRow>
         <TableCell>Numberplate</TableCell>
         <TableCell>Date</TableCell>
+        <TableCell>Location</TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -70,6 +71,7 @@ return (
             {user.registernumber}
           </TableCell>
           <TableCell>{user.date}</TableCell>
+          <TableCell>{user.location}</TableCell>
           <TableCell>
           <Button variant='outlined'> Edit </Button>
             <Button variant='outlined' color='error' onClick={() => deleteItem(user.key)}> Delete </Button>
