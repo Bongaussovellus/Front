@@ -1,7 +1,7 @@
 import React from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/App.css'
-import { getDatabase, ref, push, set, onValue, child, get } from "firebase/database";
+import { getDatabase, ref, push, set, onValue, child, get, remove } from "firebase/database";
 import { useState } from "react";
 import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-material.css";
@@ -28,7 +28,15 @@ const Home = () => {
   }).catch((error) => {
     console.error(error);
   });
-  
+  //console.log(items);
+
+  const deleteItem = (id) => {
+    remove(
+      ref(db, 'users/' + user.uid + "/" + id)
+    );
+    alert("Bongaus poistettu");
+  }
+
   /*return (
     <div class="home" content="width=device-width, initial-scale=1.0">
       <div class="title">
@@ -64,7 +72,7 @@ return (
           <TableCell>{user.date}</TableCell>
           <TableCell>
           <Button variant='outlined'> Edit </Button>
-            <Button variant='outlined' color='error'> Delete </Button>
+            <Button variant='outlined' color='error' onClick={() => deleteItem(user.key)}> Delete </Button>
           </TableCell>
         </TableRow>
       ))}
