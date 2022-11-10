@@ -19,6 +19,9 @@ import { UserAuth } from '../Context/AuthContext';
 const GOOGLE_MAPS_API_KEY="AIzaSyBZ8seLhFZ3P-J6hTW3lFyGGHKv-UpKD60"
 const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 
+// Nykyisen päivän haku
+const curr = new Date();
+const date = curr.toISOString().substring(0,10)
 
 const mapContainerStyle = {
   minWidth: '95%',
@@ -147,12 +150,12 @@ return <div class='Map'>
        <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => { 
           setSelected(null)}}>
 
-        <div> 
+        <div>
           <h2 style={{color:"black"}}>Rekisterikilpi bongattu!</h2>
           <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
-            <input type="date" name='date' value={registry.date} onChange={inputChanged} /> 
+            <input type="date" name='date' defaultValue={date} onChange={inputChanged} /> 
             <input type="submit" value="Tallenna" />
           </form>
         </div>
