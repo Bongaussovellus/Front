@@ -31,15 +31,23 @@ const Login = () => {
 
   return (
     <div>
-      <h1 style={{marginTop:'50px'}}>Tervetuloa Bongailusovellukseen</h1>
+      <h1 style={{marginTop:'50px'}}>SPOT<a className='it'>it</a></h1>
      
       <div>  
         
-        <h2> Bongaussovellus on ilmainen sovellus, jonka avulla voit pitää kirjaa rekisterikilpibongailuistasi!</h2>
-        <h3>Kirjaudu ilmaiseksi sisään Google-tunnuksellasi ja ala bongailemaan !</h3>
-        <GoogleButton class="button" onClick={handleGoogleSignIn} />
+        <h2>Mikä on SPOT<a className='it'>it</a> sovellus?</h2>
+        <h3>SPOT<a className='it'>it</a> on selainpohjainen ilmainen applikaatio, joka auttaa hauskassa rekisterikilpibongaus-harrastuksessa!</h3>
+        <h3>Tarkoituksena on bongailla reksiterikilpiä järjestyksessä. Kirjaudu sisään Google-tunnuksillasi ja olet valmiina aloittamaan bongailun.</h3> 
+        <h3>Voit aloittaa pelin löytämällä rekisterikilven numero 1. Jos olet jo aloittanut pelin, voit jatkaa merkkaamalla seuraavan bongaamasi rekisterikilven</h3>
+
+        <h3>Kartta-osiosta voit merkata sijainnin, jossa bongaat rekisterikilven. Bongaukset tallentuu omalle välilehdelleen.</h3>
+        <GoogleButton class="button" onClick={handleGoogleSignIn}/>
+      </div>
+      <div>
+        <h2></h2>
       </div>
     </div>
+    
   );
 };
 
