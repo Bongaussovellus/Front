@@ -15,11 +15,11 @@ h1 {
     }
 
 .frontpage, .home {
-    margin-top: min(15%);
+    margin-top: min(20%);
 
     }
 .Img {
-    border-radius: 50%;
+    border-radius: 60%;
     display: block;
     margin-inline: auto;
     margin-bottom: 3%;
@@ -39,3 +39,58 @@ h1 {
     margin-left: auto;
     margin-right: auto;
 }
+
+.LogInPage {
+    margin-top: 15%;
+    padding: 30px;
+}
+
+.logTitle {
+    font-size: xx-large;
+}
+
+.home {
+    width: 50%;
+    margin-top: 10%;
+
+}
+.Table {
+    margin-top: 10%;
+    color: azure;
+}
+@media screen and (max-width: 768px) {
+    .frontpage, .home {
+        margin-top: 45%;
+    }
+    .home {
+        width: 90%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+
+    .img {
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        margin-right:10px;
+        margin-top: 3px;
+    }
+
+    }
+
+@media screen and (max-width: 576px) {
+        .frontpage, .home {
+            margin-top: 45%;
+        }
+        h1 {
+            font-size: 20px;
+        }
+        .img {
+            border-radius: 50%;
+            width: 30px;
+            height: 30px;
+            margin-right:10px;
+            margin-top: 3px;
+        }
+        }
