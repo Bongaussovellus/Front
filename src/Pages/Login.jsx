@@ -24,7 +24,7 @@ const Login = () => {
 
   useEffect(() => {
     if (user != null) {
-      navigate('/Home');
+      navigate('/FrontPage');
     }
     
   }, [user]);
