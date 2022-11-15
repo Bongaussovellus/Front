@@ -1,5 +1,5 @@
 import {GoogleMap, useLoadScript, Marker, InfoWindowF,} from '@react-google-maps/api';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { formatRelative } from "date-fns";
 import usePlacesAutocomplete, {getGeocode,getLatLng} from "use-places-autocomplete";
 import {
@@ -13,6 +13,7 @@ import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
 import { getDatabase, push, ref, set } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
+import { async } from '@firebase/util';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -48,7 +49,7 @@ export default function Map() {
   const [registry, setValue] = useState({
     numberplate: '',
     date: new Date(),
-    location: address
+    location: ''
   })
   
   const [location, setLocation] = useState({
@@ -65,15 +66,27 @@ export default function Map() {
   const addRegistry = (e) => {
     e.preventDefault()
     setValues([...registries,registry])
+    getAddress();
     writeUserData();
-    console.log(registry, registries)
 
   }
+
+  // 
+  useEffect(() => {
+    if (location.lat !== 0 & location.lng !== 0) {
+      getAddress();
+    } else {
+      console.log("tyhjää")
+    }
+  }, );
+
   // Haetaan kartalta klikatun markerin osoite
-  const getAddress = () => {
-    fetch(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${GOOGLE_MAPS_API_KEY}`)
-      .then(response => response.json())
-      .then(address => setAddress(address.results[1].formatted_address));
+  const getAddress = async () => {
+    const response = await fetch(
+      `https://maps.googleapis.com/maps/api/geocode/json?latlng=${location.lat},${location.lng}&key=${GOOGLE_MAPS_API_KEY}`)
+      .then((response) => response.json())
+      setAddress(response.results[0].formatted_address);
+      
    }
 
 
@@ -82,7 +95,6 @@ export default function Map() {
     const database = getDatabase();
     const spotListRef = ref(database, 'users/' + user.uid);
     const newSpotRef = push(spotListRef);
-    getAddress();
     set(newSpotRef, {
       registernumber: registry.numberplate,
       location: address,
@@ -119,9 +131,9 @@ const [selected, setSelected] = React.useState(null);
     setLocation( {
       lat: event.latLng.lat(),
       lng: event.latLng.lng()
-    },)
+    },)   
   }, [])
-
+  
   const mapRef = React.useRef();
   const onMapLoad = React.useCallback((map) => {
     mapRef.current = map;
