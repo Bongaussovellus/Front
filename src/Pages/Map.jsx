@@ -13,7 +13,7 @@ import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
 import { getDatabase, push, ref, set } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
-import { async } from '@firebase/util';
+import {TbCurrentLocation} from 'react-icons/tb';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -198,9 +198,10 @@ function Locate({ panTo } ) { // Paikannusnappi joka pyytää käyttäjän lupaa
     }, () => null
   );
 }}>
-  <a>Find me</a>
+  <TbCurrentLocation class="icon" size={35}/>
   </button>
 )}
+
 
 
 function Search( { panTo }) { //Hakukenttä
