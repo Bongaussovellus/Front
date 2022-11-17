@@ -7,7 +7,6 @@ import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
 
-
 const Home = () => {
   const { user } = UserAuth();
   const db = getDatabase();
@@ -21,7 +20,6 @@ const Home = () => {
       const data = snapshot.val();
       const mappedItems = data ? Object.keys(data).map(key => ({key, ...data[key]})) : [];
       setItems(mappedItems); 
-      
     } else {
       console.log("No data available");
     }
