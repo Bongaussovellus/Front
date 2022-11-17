@@ -5,18 +5,20 @@ div{
 
 .Map {
     margin-top: 90px;
+    max-width: 100%;
     display: grid;
     position: relative;
 }
 
 .ComboboxInput {
+    position: relative;
+    display: flex;
     height:28px;
     border-radius: 10px;
-    min-width:450px;
-    max-width:500px;
-    background-color: #1e1e1e;
-    border-style:solid;
-    border-color: #181818;
+    width:500px;
+    background-color: #151515;
+    border-style:double;
+    border-width: 1px;
     text-transform: lowercase;
     text-align: center;
     display:block;
@@ -25,27 +27,79 @@ div{
 
   }
 .locate {
-    padding:9px 25px;
-    background-color: rgba(8, 8, 8, 0.525);
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease 0s;
-    color: white;
     position: absolute;
-    margin: 15px;
-    margin-left:min(47%);
+    display: flex;
+    cursor: pointer;
+    top: 0;
+    right: 0;
+    margin-top: 10px;
+    transition: all 0.3s ease 0s;
+    margin-right: 60px;
+    background-color: rgba(255, 255, 255, 0.727);
+    border-radius: 60%;
+    border: none;
+    color: rgb(19, 22, 35);
 
 }
+
 
 .locate:hover {
-    background-color: rgba(17, 17, 17, 0.966);
-    color: rgb(213, 213, 213);
+    color: rgb(255, 0, 0);
 }
 
-  
-@media screen and (max-width: 768px) {
-     .Map {
-        margin-inline: auto;
-     }
+
+@media only screen and (min-width : 281px) and (max-width : 780px)
+{
+  .Map {
+    margin-inline: auto;
+ }
+  .ComboboxInput {
+		width:200px;
+	}
+
+  .locate {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    right: 0;
+    margin-top: 9px;
+    background-color: rgba(255, 255, 255, 0.54);
+    transition: all 0.3s ease 0s;
+    margin-right: 60px;
+    border-radius: 50%;
+    color: rgb(19, 22, 35);
+}
+.locate:hover {
+  color: rgb(255, 0, 0);
+}
+
+
+
+}
+
+@media only screen and (min-width : 180px) and (max-width : 280px)
+{
+  .Map {
+    margin-inline: auto;
+ }
+  .ComboboxInput {
+		width:150px;
+	}
+  .locate {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    margin-top: 65px;
+    transition: all 0.3s ease 0s;
+    margin-right: 10px;
+    background-color: rgba(255, 255, 255, 0.727);
+    border-radius: 50%;
+    color: rgb(21, 27, 54);
+}
+  .locate:hover {
+    color: rgb(255, 0, 0);
+  }
+
+
+
 }
