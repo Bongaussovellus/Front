@@ -5,7 +5,9 @@ import { getDatabase, ref, child, get, remove } from "firebase/database";
 import { useState } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
-import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, Button } from '@mui/material';
+import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
+import {AiOutlineEdit} from 'react-icons/ai';
+import {RiDeleteBinLine } from 'react-icons/ri';
 
 const Home = () => {
   const { user } = UserAuth();
@@ -69,6 +71,8 @@ return (
         <TableCell>Rekisterinumero</TableCell>
         <TableCell>Päivä</TableCell>
         <TableCell>Osoite</TableCell>
+        <TableCell></TableCell>
+        <TableCell></TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -82,8 +86,10 @@ return (
           <TableCell>{user.date}</TableCell>
           <TableCell>{user.location}</TableCell>
           <TableCell>
-          <Button variant='outlined'> Edit </Button>
-          <Button variant='outlined' color='error' onClick={() => deleteItem(user.key)}> Delete </Button>
+          <button className="tableButton"><AiOutlineEdit size={25} color={'yellow'}/></button>
+          </TableCell>
+          <TableCell>
+          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={25}/></button>
           </TableCell>
         </TableRow>
       ))}
