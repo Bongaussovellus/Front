@@ -76,7 +76,7 @@ export default function Map() {
     if (location.lat !== 0 & location.lng !== 0) {
       getAddress();
     } else {
-      console.log("tyhjää")
+      console.log("Ei osoitetta!")
     }
   }, );
 
