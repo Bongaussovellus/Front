@@ -1,7 +1,6 @@
 import Login from './Pages/Login';
 import Home from './Pages/Home';
 import Map from './Pages/Map';
-import History from './Pages/History';
 import Navbar from './Components/Navbar';
 import Protected from './Components/Protected';
 import FrontPage from './Pages/FrontPage';
@@ -37,13 +36,7 @@ function App() {
                 <Map />
               </Protected>
             }
-          />
-              <Route path='/History' element={
-              <Protected>
-                <History />
-              </Protected>
-            }
-          />                             
+          />                           
         </Routes>
       </AuthContextProvider>
     </div>
