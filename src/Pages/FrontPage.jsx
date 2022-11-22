@@ -9,16 +9,26 @@ const FrontPage = () => {
   const db = getDatabase();
   const { user } = UserAuth();
   const [item, setItem] = useState([]);
+  const [nextRegNum, setNextRegNum] = useState(null);
 
+  // Haetaan viimeisin bongaus databasesta
   const latestRef = query(ref(db, 'users/' + user.uid), limitToLast(1));
   get(latestRef).then((snapshot) => {
     const data = snapshot.val();
     const mappedItems = data ? Object.keys(data).map(key => ({key, ...data[key]})) : 
     [];
     setItem(mappedItems);
+    updateNext(); 
   })
 
-  
+  // Lasketaan seuraavan bongattavan rekisterikilven numero.
+  function updateNext() {
+    let text = item[0].registernumber;
+    const textArray = text.split('-');
+    const regnum = parseInt(textArray[1]);
+    setNextRegNum(regnum + 1);
+  }
+ 
 
     return (
       <div class="frontpage">
@@ -26,6 +36,7 @@ const FrontPage = () => {
         {item.map((item) => (
           <div key={item.registernumber}>
             <h2>Viimeisin bongaus: {item.registernumber} </h2>
+            <h2>Seuraava bongattava rekisterinumero: {nextRegNum}</h2>
           </div>  
         ))}
       </div>
