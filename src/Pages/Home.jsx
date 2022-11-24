@@ -78,7 +78,7 @@ return (
     <TableBody>
       {items.map((user) => (
         <TableRow
-          key={user.registernumber}
+          key={user.key}
         >
           <TableCell >
             {user.registernumber}

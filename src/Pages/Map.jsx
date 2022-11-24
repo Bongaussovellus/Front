@@ -11,7 +11,7 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
-import { getDatabase, push, ref, set } from 'firebase/database';
+import { getDatabase, push, ref, set, get, child } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
 import {TbCurrentLocation} from 'react-icons/tb';
 
@@ -48,7 +48,7 @@ export default function Map() {
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
-    date: new Date(),
+    date: date,
     location: ''
   })
   
@@ -68,17 +68,45 @@ export default function Map() {
     setValues([...registries,registry])
     getAddress();
     writeUserData();
-
+    setSelected(null);
   }
 
-  // 
+  function randomizeCoordinate(point) {
+    return {
+      lat: point.lat + Math.random(),
+      lng: point.lng + Math.random()
+    }
+  }
+  
+  useEffect(() => {
+    const dbRef = ref(getDatabase());
+    console.log(user)
+    get(child(dbRef, `users/${user.uid}`)).then((snapshot) => {
+      if(snapshot.exists()) {
+        const data = snapshot.val();
+        const mappedItems = data ? Object.keys(data).map(key =>
+           ({key,
+            ...data[key], 
+            ...randomizeCoordinate(center), // FIX ME: lat, lng pitäisi tulla datasta
+            time: data[key]["date"] ? new Date(data[key]["date"]) : null // FIX ME: 
+            })) : [];
+        console.log(mappedItems);
+        setMarkers(mappedItems)
+      } else {
+        console.log("No data available");
+      }
+    }).catch((error) => {
+      console.error(error);
+    });
+  },[])
+  
   useEffect(() => {
     if (location.lat !== 0 & location.lng !== 0) {
       getAddress();
     } else {
       console.log("Ei osoitetta!")
     }
-  }, );
+  });
 
   // Haetaan kartalta klikatun markerin osoite
   const getAddress = async () => {
@@ -106,7 +134,7 @@ export default function Map() {
   const {isLoaded, loadError} = useLoadScript ({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
-    libraries: ["places"]
+    libraries: libraries
   });
 
   /*const {isLoaded, loadError} = useLoadScript ({
@@ -161,7 +189,7 @@ return <div class='Map'>
       
       {markers.map(marker => (
       <Marker
-       key={marker.time.toISOString()}
+       key={marker.key}
        position= { { lat: marker.lat, lng: marker.lng }}
        onClick={() =>{
         setSelected(marker);
@@ -179,7 +207,7 @@ return <div class='Map'>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
             <input type="date" name='date' defaultValue={date} onChange={inputChanged} /> 
-            <input type="submit" value="Tallenna" />
+            <input type="submit" value="Tallenna"  />
           </form>
         </div>
        </InfoWindowF>): null}
