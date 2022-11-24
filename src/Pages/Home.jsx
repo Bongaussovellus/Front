@@ -35,6 +35,7 @@ const Home = () => {
       ref(db, 'users/' + user.uid + "/" + id)
     );
     alert("Bongaus poistettu");
+    window.location.reload(false);
   }
 
   const darkTheme = createTheme({
