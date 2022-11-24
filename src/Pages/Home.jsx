@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import {AiOutlineEdit} from 'react-icons/ai';
 import {RiDeleteBinLine } from 'react-icons/ri';
+import UpdateSpot from '../Components/UpdateSpot';
 
 const Home = () => {
   const { user } = UserAuth();
@@ -87,7 +88,7 @@ return (
           <TableCell>{user.date}</TableCell>
           <TableCell>{user.location}</TableCell>
           <TableCell>
-          <button className="tableButton"><AiOutlineEdit size={25} color={'yellow'}/></button>
+          <UpdateSpot spotKey={user.key}></UpdateSpot>
           </TableCell>
           <TableCell>
           <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={25}/></button>
@@ -98,6 +99,7 @@ return (
   </Table>
 </TableContainer>
 </ThemeProvider>
+
 </div>
 );
 }
