@@ -70,7 +70,6 @@ h1 {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    --size: 90px;
 }
 
 .next {
