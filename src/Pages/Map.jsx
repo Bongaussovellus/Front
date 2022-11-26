@@ -11,7 +11,7 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
-import { getDatabase, push, ref, set, get, child } from 'firebase/database';
+import { getDatabase, push, ref, set, get, query, limitToLast } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
 import {BiCurrentLocation} from 'react-icons/bi';
 import {FcInfo} from 'react-icons/fc';
