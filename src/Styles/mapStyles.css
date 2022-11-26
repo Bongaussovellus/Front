@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
 
 div{
     color:black;
+    font-family: 'Montserrat', 'sans-serif';
 }
 
 .Map {
@@ -35,18 +37,42 @@ div{
     margin-top: 10px;
     transition: all 0.3s ease 0s;
     margin-right: 60px;
-    background-color: rgba(255, 255, 255, 0.727);
-    border-radius: 60%;
+    background-color: transparent;
     border: none;
-    color: rgb(19, 22, 35);
+    color: rgb(37, 37, 37);
 
 }
 
 
-.locate:hover {
-    color: rgb(255, 0, 0);
+.nextReg {
+  position: absolute;
+  color: rgb(208, 0, 0);
+  top: 0;
+  right: 0;
+  margin-top: 12px;
+  transition: all 0.66s ease-out;
+  margin-right: 110px;
+  text-transform: uppercase;
+  cursor: pointer;
 }
 
+.nextReg p {
+  background-color: rgba(37, 37, 37, 0.602);
+  padding: 10px 20px;
+  font-size: small;
+  transition: all 0.66s ease-out;
+
+}
+
+.Tallenna {
+  border: none;
+  background-color: rgb(192, 0, 0);
+  color: white;
+  font-size: small;
+  border-radius: 5px;
+  margin: 1px;
+  padding: 4px 9px;
+}
 
 @media only screen and (min-width : 281px) and (max-width : 780px)
 {

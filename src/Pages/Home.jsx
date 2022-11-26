@@ -66,12 +66,11 @@ return (
   <CssBaseline />
   <TableContainer component={Paper} className="Table">
   <Table  >
-    <TableHead>
+    <TableHead className="Tablerow">
       <TableRow>
         <TableCell>Rekisterinumero</TableCell>
         <TableCell>Päivä</TableCell>
         <TableCell>Osoite</TableCell>
-        <TableCell></TableCell>
         <TableCell></TableCell>
       </TableRow>
     </TableHead>
@@ -86,10 +85,7 @@ return (
           <TableCell>{user.date}</TableCell>
           <TableCell>{user.location}</TableCell>
           <TableCell>
-          <button className="tableButton"><AiOutlineEdit size={25} color={'yellow'}/></button>
-          </TableCell>
-          <TableCell>
-          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={25}/></button>
+          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}/></button>
           </TableCell>
         </TableRow>
       ))}

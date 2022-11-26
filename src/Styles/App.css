@@ -1,12 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap');
+
 * {
     margin-inline: auto;
     min-width:90% 1024px;
+    font-family: 'Montserrat', 'sans-serif';
 
 }
-h1,h3,h2 {
+h1,h3,h2,p {
     text-align: center;
     color: white;
     }
+
+.numberplate {
+    font-size: small;
+}
 h1 {
     font-size: 30px;
 }
@@ -26,13 +33,13 @@ h1 {
     }
     
 .logos {
-        color: white;
-        letter-spacing: 2px;
-        text-transform: uppercase;
-        font-weight: bold;
-        font-size:x-large;
-        line-height: 80px;
-        margin-top: 15%;
+    color: white;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size:x-large;
+    line-height: 80px;
+    margin-top: 15%;
     
     }
 .log {
@@ -50,8 +57,8 @@ h1 {
 }
 
 .home {
-    width: 50%;
-    margin-top: 10%;
+    width: 60%;
+    margin-top: 15%;
 
 }
 .Table {
@@ -63,16 +70,25 @@ h1 {
     background-color: transparent;
     border: none;
     cursor: pointer;
-    margin-left: 15px;
+    --size: 90px;
 }
 
-@media screen and (max-width: 768px) {
-    .frontpage, .home {
+.next {
+
+    margin:5% 30%;
+    padding: 10px 20px;
+    overflow: hidden;
+}
+@media screen and (max-width: 769px) {
+    .frontpage {
         margin-top: 45%;
     }
     .home {
-        width: 90%;
+        width: 95%;
+        font-size: small;
+        margin-top: 20%;
     }
+
     h1 {
         font-size: 20px;
     }
@@ -84,11 +100,22 @@ h1 {
         margin-right:10px;
         margin-top: 3px;
     }
-
     }
 
+
+@media screen and (max-width: 912px) {
+    .frontpage {
+        margin-top: 45%;
+    }
+    .home {
+        width: 85%;
+        margin-top: 20%;
+
+    }
+}
+
 @media screen and (max-width: 576px) {
-        .frontpage, .home {
+        .frontpage {
             margin-top: 45%;
         }
         h1 {
@@ -100,5 +127,10 @@ h1 {
             height: 30px;
             margin-right:10px;
             margin-top: 3px;
+        }
+        .home {
+            font-size: small;
+            width: 95%;
+            margin-top: 30%;
         }
         }

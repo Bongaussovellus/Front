@@ -11,9 +11,11 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
-import { getDatabase, push, ref, set } from 'firebase/database';
+import { getDatabase, push, ref, set, query, limitToLast, get } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
-import {TbCurrentLocation} from 'react-icons/tb';
+import {BiCurrentLocation} from 'react-icons/bi';
+import {FcInfo} from 'react-icons/fc';
+import swal from 'sweetalert';
 
 
 // API-avaimet väliaikaisesti tässä
@@ -24,8 +26,9 @@ const GOOGLE_PLACES_API_KEY="AIzaSyD06HZ7zETSRxkfOLHxnapESbQqi9kKp78"
 const curr = new Date();
 const date = curr.toISOString().substring(0,10)
 
+
 const mapContainerStyle = {
-  minWidth: '95%',
+  minWidth: '97%',
   height: '80vh',
 };
 
@@ -41,10 +44,14 @@ const options = {
 
 const libraries = ["places"];
 
+
+const db = getDatabase();
+
 export default function Map() {
 
   const [address, setAddress] = useState('');
   const { user } = UserAuth();
+
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
@@ -62,16 +69,46 @@ export default function Map() {
     setValue({...registry, [e.target.name]: e.target.value})
   }
 
+  const [item, setItem] = useState([]);
+  const [nextRegNum, setNextRegNum] = useState(null);
+
+  // Haetaan viimeisin bongaus databasesta
+  const latestRef = query(ref(db, 'users/' + user.uid), limitToLast(1));
+  get(latestRef).then((snapshot) => {
+    const data = snapshot.val();
+    const mappedItems = data ? Object.keys(data).map(key => ({key, ...data[key]})) : 
+    [];
+    setItem(mappedItems);
+    updateNext(); 
+  })
+  //Seuraavan bongauksen päivitys
+  function updateNext() {
+    let text = item[0].registernumber;
+    const textArray = text.split('-');
+    const regnum = parseInt(textArray[1]);
+    setNextRegNum(regnum + 1);
+  }
   // asetetaan arvot olioihin
   const addRegistry = (e) => {
     e.preventDefault()
-    setValues([...registries,registry])
-    getAddress();
-    writeUserData();
+    const num = registry.numberplate;
 
-  }
+  // tarkistetaan onko syötetty reknumero liian iso tai pieni kuin
+  // odotettu seuraava reknumero
+    if (num.replace(/\D/g,'') > nextRegNum) {
+      swal({text: "Rekisterinumero jota yrität tallentaa on liian suuri", icon: "error"})
 
-  // 
+    } else if (num.replace(/\D/g,'') < nextRegNum) {
+      swal({text: "Rekisterinumero jota yrität tallentaa on liian pieni", icon: "error"})
+  // tallennetaan vasta kuin syötetty reknumero vastaa odotettua seuraavaa reknumeroa
+    } else { 
+      setValues([...registries,registry])
+      getAddress();
+      writeUserData();
+      e.window.close();
+    }
+    }
+  //Tarkistaa onko long ja lat tyhjät
   useEffect(() => {
     if (location.lat !== 0 & location.lng !== 0) {
       getAddress();
@@ -147,6 +184,9 @@ const [selected, setSelected] = React.useState(null);
   if (loadError) return "Virhe ladatessa karttaa";
   if (!isLoaded) return "Ladataan karttaa...";
 
+
+
+
 return <div class='Map'>  
     <Search panTo={panTo} />  
     <GoogleMap 
@@ -158,6 +198,9 @@ return <div class='Map'>
     onLoad={onMapLoad }
     >
     <Locate panTo={panTo} />
+    <div className='nextReg'> 
+        <FcInfo type="button" onClick={() => swal( "Seuraava bongattava numero on:  " + JSON.stringify(nextRegNum))} size={33} />
+    </div>
       
       {markers.map(marker => (
       <Marker
@@ -175,11 +218,11 @@ return <div class='Map'>
 
         <div>
           <h2 style={{color:"black"}}>Rekisterikilpi bongattu!</h2>
-          <p>Bongattu: {formatRelative(selected.time, new Date())}</p>
+          <p style={{color:"black"}} >Bongattu: {formatRelative(selected.time, new Date())}</p>
           <form onSubmit={addRegistry}>
-            <input type="text" name='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero" />
+            <input type="text" name='numberplate' className='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero"  />
             <input type="date" name='date' defaultValue={date} onChange={inputChanged} /> 
-            <input type="submit" value="Tallenna" />
+            <input type="submit" value="Tallenna" className='Tallenna'/>
           </form>
         </div>
        </InfoWindowF>): null}
@@ -198,7 +241,7 @@ function Locate({ panTo } ) { // Paikannusnappi joka pyytää käyttäjän lupaa
     }, () => null
   );
 }}>
-  <TbCurrentLocation class="icon" size={35}/>
+  <BiCurrentLocation class="icon" size={35 }/>
   </button>
 )}
 
@@ -257,6 +300,7 @@ function Search( { panTo }) { //Hakukenttä
      </ComboboxPopover>
   </Combobox>
   </div>
+
   )
 
  

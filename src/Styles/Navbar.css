@@ -21,14 +21,16 @@ nav {
     color:rgb(255, 0, 0);
     margin-left:3px;
  }
-nav .logo { 
+.logo { 
     float: left;
     width: 40%;
     height: 100%;
     display: flex;
     align-items: center;
     font-size: 35px;
-    color: #fff;
+    color: #fff ;
+    text-decoration: none;
+    margin-top: 1%;
 }
 nav .links {
     padding: 0;
@@ -117,11 +119,12 @@ nav .icon-burger .line {
     border-radius: 3px;
     transition: all .5s ease-in-out;
 }
-@media screen and (max-width: 748px) {
+@media screen and (max-width: 912px) {
     nav .logo {
         float: left;
         width: auto;
         justify-content: center;
+        margin-top: 3%;
     }
     nav .links{
         float: none;

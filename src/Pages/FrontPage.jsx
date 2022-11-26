@@ -33,9 +33,9 @@ const FrontPage = () => {
       <div class="frontpage">
         <h1>Tervetuloa käyttämään <br></br>SPOT<a className='it'>it</a>-sovellusta!</h1>
         {item.map((item) => (
-          <div key={item.registernumber}>
-            <h2>Viimeisin bongaus: {item.registernumber} </h2>
-            <h2>Seuraava bongattava rekisterinumero: {nextRegNum}</h2>
+          <div className='next' key={item.registernumber}>
+            <h2>Edellinen bongauksesi: <br></br><br></br> {item.registernumber} </h2>
+            <h2>Seuraava bongattava rekisterinumerosi: <br></br><br></br> {nextRegNum}</h2>
           </div>  
         ))}
       </div>
