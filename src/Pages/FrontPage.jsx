@@ -1,8 +1,7 @@
 import React, { useState } from 'react'
 import '../Styles/App.css'
 import './Home'
-import { db, auth } from '../service/firebase'
-import { getDatabase, ref, query, orderByChild, limitToLast, limitToFirst, get, child, snapshot, orderByKey } from 'firebase/database';
+import { getDatabase, ref, query, limitToLast, get } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
 
 const FrontPage = () => {
@@ -43,4 +42,4 @@ const FrontPage = () => {
     )
   }
   
-  export default FrontPage;
+  export default FrontPage ;
