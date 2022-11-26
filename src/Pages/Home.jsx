@@ -8,6 +8,7 @@ import CssBaseline from '@mui/material/CssBaseline';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
 import {AiOutlineEdit} from 'react-icons/ai';
 import {RiDeleteBinLine } from 'react-icons/ri';
+import UpdateSpot from '../Components/UpdateSpot';
 
 const Home = () => {
   const { user } = UserAuth();
@@ -35,6 +36,7 @@ const Home = () => {
       ref(db, 'users/' + user.uid + "/" + id)
     );
     alert("Bongaus poistettu");
+    window.location.reload(false);
   }
 
   const darkTheme = createTheme({
@@ -77,7 +79,7 @@ return (
     <TableBody>
       {items.map((user) => (
         <TableRow
-          key={user.registernumber}
+          key={user.key}
         >
           <TableCell >
             {user.registernumber}
@@ -85,7 +87,10 @@ return (
           <TableCell>{user.date}</TableCell>
           <TableCell>{user.location}</TableCell>
           <TableCell>
-          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}/></button>
+          <UpdateSpot spotKey={user.key}></UpdateSpot>
+          </TableCell>
+          <TableCell>
+          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={25}/></button>
           </TableCell>
         </TableRow>
       ))}
@@ -93,6 +98,7 @@ return (
   </Table>
 </TableContainer>
 </ThemeProvider>
+
 </div>
 );
 }

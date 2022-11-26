@@ -11,7 +11,7 @@ import {
         } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
-import { getDatabase, push, ref, set, query, limitToLast, get } from 'firebase/database';
+import { getDatabase, push, ref, set, get, child } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
 import {BiCurrentLocation} from 'react-icons/bi';
 import {FcInfo} from 'react-icons/fc';
@@ -55,7 +55,7 @@ export default function Map() {
   // luodaan rekisterinumero, päivämäärä ja sijainti-oliot
   const [registry, setValue] = useState({
     numberplate: '',
-    date: new Date(),
+    date: date,
     location: ''
   })
   
@@ -91,31 +91,20 @@ export default function Map() {
   // asetetaan arvot olioihin
   const addRegistry = (e) => {
     e.preventDefault()
-    const num = registry.numberplate;
+    setValues([...registries,registry])
+    getAddress();
+    writeUserData();
 
-  // tarkistetaan onko syötetty reknumero liian iso tai pieni kuin
-  // odotettu seuraava reknumero
-    if (num.replace(/\D/g,'') > nextRegNum) {
-      swal({text: "Rekisterinumero jota yrität tallentaa on liian suuri", icon: "error"})
+  }
 
-    } else if (num.replace(/\D/g,'') < nextRegNum) {
-      swal({text: "Rekisterinumero jota yrität tallentaa on liian pieni", icon: "error"})
-  // tallennetaan vasta kuin syötetty reknumero vastaa odotettua seuraavaa reknumeroa
-    } else { 
-      setValues([...registries,registry])
-      getAddress();
-      writeUserData();
-      e.window.close();
-    }
-    }
-  //Tarkistaa onko long ja lat tyhjät
+  // 
   useEffect(() => {
     if (location.lat !== 0 & location.lng !== 0) {
       getAddress();
     } else {
       console.log("Ei osoitetta!")
     }
-  }, );
+  });
 
   // Haetaan kartalta klikatun markerin osoite
   const getAddress = async () => {
@@ -143,7 +132,7 @@ export default function Map() {
   const {isLoaded, loadError} = useLoadScript ({
     googleMapsApiKey: GOOGLE_MAPS_API_KEY,
     googlePlacesApiKey: GOOGLE_PLACES_API_KEY,
-    libraries: ["places"]
+    libraries: libraries
   });
 
   /*const {isLoaded, loadError} = useLoadScript ({
@@ -204,7 +193,7 @@ return <div class='Map'>
       
       {markers.map(marker => (
       <Marker
-       key={marker.time.toISOString()}
+       key={marker.key}
        position= { { lat: marker.lat, lng: marker.lng }}
        onClick={() =>{
         setSelected(marker);
@@ -222,7 +211,7 @@ return <div class='Map'>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' className='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero"  />
             <input type="date" name='date' defaultValue={date} onChange={inputChanged} /> 
-            <input type="submit" value="Tallenna" className='Tallenna'/>
+            <input type="submit" value="Tallenna" />
           </form>
         </div>
        </InfoWindowF>): null}
