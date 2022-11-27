@@ -1,19 +1,12 @@
 import {GoogleMap, useLoadScript, Marker, InfoWindowF,} from '@react-google-maps/api';
 import React, { useEffect, useState } from 'react';
 import { formatRelative } from "date-fns";
-import usePlacesAutocomplete, {getGeocode,getLatLng} from "use-places-autocomplete";
-import {
-          Combobox,
-          ComboboxInput,
-          ComboboxPopover,
-          ComboboxList,
-          ComboboxOption,
-        } from "@reach/combobox";
 import "@reach/combobox/styles.css";
 import '../Styles/mapStyles.css';
 import { getDatabase, push, ref, set, get, query, limitToLast } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
-import {BiCurrentLocation} from 'react-icons/bi';
+import Locate from '../Components/Locate.js';
+import Search from '../Components/Search.js';
 import {FcInfo} from 'react-icons/fc';
 import swal from 'sweetalert';
 
@@ -99,7 +92,10 @@ export default function Map() {
 
     } else if (num.replace(/\D/g,'') < nextRegNum) {
       swal({text: "Rekisterinumero jota yrität tallentaa on liian pieni", icon: "error"})
+
   // asetetaan arvot olioihin kuin syötetty reknumero vastaa odotettua seuraavaa reknumeroa
+    } else if ( registry.date > date) {
+      swal({text: "Rekisterinumeron bongausta ei voi tallentaa tulevaisuuteen", icon: "error"})
     } else { 
       setValues([...registries,registry])
       getAddress();
@@ -107,7 +103,8 @@ export default function Map() {
       e.window.close();
     }
     }
-  // 
+
+  // varmistetaan, että osoite arvot eivät ole nollat
   useEffect(() => {
     if (location.lat !== 0 & location.lng !== 0) {
       getAddress();
@@ -177,7 +174,7 @@ const [selected, setSelected] = React.useState(null);
 
   const panTo = React.useCallback(({lat, lng}) => {  // Ottaa valitun pisteen kordinaatit ja tarkentaa siihen
   mapRef.current.panTo({lat, lng}); // tarkentaa kartan kyseiseen sijaintiin
-  mapRef.current.setZoom(18); // zoomaa kyseiseen sijaintiin
+  mapRef.current.setZoom(16); // zoomaa kyseiseen sijaintiin
    }, []);
 
   if (loadError) return "Virhe ladatessa karttaa";
@@ -190,7 +187,7 @@ return <div class='Map'>
     <Search panTo={panTo} />  
     <GoogleMap 
     mapContainerStyle={mapContainerStyle}
-    zoom={8}
+    zoom={7}
     center={center}
     options={options}
     onClick={onMapClick}
@@ -229,78 +226,3 @@ return <div class='Map'>
   </div>;
 }
 
-function Locate({ panTo } ) { // Paikannusnappi joka pyytää käyttäjän lupaa kordinaatteihin ja kohdistaa niihin.
-  return (
-    <button className="locate" onClick={() => {
-      navigator.geolocation.getCurrentPosition((position) => {
-        panTo({
-          lat: position.coords.latitude,
-          lng: position.coords.longitude,
-      });
-    }, () => null
-  );
-}}>
-  <BiCurrentLocation class="icon" size={35 }/>
-  </button>
-)}
-
-
-
-function Search( { panTo }) { //Hakukenttä
-  const {
-    ready, 
-    value, 
-    suggestions: {status, data}, 
-    setValue, clearSuggestions,}
-     = usePlacesAutocomplete({
-    requestOptions: {
-      location: { lat: () => 60.169857, lng: () => 24.9383 },
-      radius: 100 * 10,
-     },
-    }
-  );
-
-  console.log(getLatLng)
-  return (
-    <div className="search">
-      <Combobox 
-        onSelect={async (address) => {  
-        setValue(address, false); 
-        clearSuggestions()
-        try {
-          const results =  await getGeocode({ address });
-          const { lat, lng } = await getLatLng(results[0]);
-          panTo({ lat, lng });
-            } 
-          catch(error) {
-            console.log("error")
-          }
-        }
-      }
-      >
-
-      <ComboboxInput
-        class="ComboboxInput"
-        style={{color:"white"}}
-        value={value}
-        onChange={(e) => {
-          setValue(e.target.value);
-        }}
-        disabled={!ready}
-        placeholder="Syötä osoite"
-      />
-
-    <ComboboxPopover>
-        <ComboboxList>
-          {status === "OK" && 
-          data.map(( {id, description }) => 
-        (<ComboboxOption key={id} value={description} />))}
-       </ComboboxList>
-     </ComboboxPopover>
-  </Combobox>
-  </div>
-
-  )
-
- 
-}
