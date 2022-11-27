@@ -21,7 +21,7 @@ const FrontPage = () => {
   })
 
   // Lasketaan seuraavan bongattavan rekisterikilven numero.
-  function updateNext() {
+ function updateNext() {
     let text = item[0].registernumber;
     const textArray = text.split('-');
     const regnum = parseInt(textArray[1]);

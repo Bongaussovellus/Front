@@ -67,13 +67,14 @@ return (
   <ThemeProvider theme={darkTheme}>
   <CssBaseline />
   <TableContainer component={Paper} className="Table">
-  <Table  >
+  <Table className="table" >
     <TableHead className="Tablerow">
       <TableRow>
-        <TableCell>Rekisterinumero</TableCell>
-        <TableCell>Päivä</TableCell>
-        <TableCell>Osoite</TableCell>
-        <TableCell></TableCell>
+        <TableCell width="15%" >Rekisterinumero</TableCell>
+        <TableCell width="15%">Päivä</TableCell>
+        <TableCell width="20%">Osoite</TableCell>
+        <TableCell width="1%"></TableCell>
+        <TableCell width="1%"></TableCell>
       </TableRow>
     </TableHead>
     <TableBody>
@@ -90,7 +91,7 @@ return (
           <UpdateSpot spotKey={user.key}></UpdateSpot>
           </TableCell>
           <TableCell>
-          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={25}/></button>
+          <button className="tableButton" onClick={() => deleteItem(user.key)}><RiDeleteBinLine color={'red'}  size={20}/></button>
           </TableCell>
         </TableRow>
       ))}

@@ -3,6 +3,7 @@ import {GoogleButton} from 'react-google-button'
 import { UserAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/App.css'
+import reg from '../reg.png';
 
 const Login = () => {
   const { googleSignIn, user } = UserAuth();
@@ -30,23 +31,19 @@ const Login = () => {
   }, [user]);
 
   return (
-    <div>
-      <h1 style={{marginTop:'50px'}}>SPOT<a className='it'>it</a></h1>
-     
-      <div>  
-        
+    <body className='LoginPage'>
+      <div className="LogWindow">
+      <h1>SPOT<a className='it'>it</a></h1>
+      <div className='LogText'>  
+      <GoogleButton className="CsButton" id="CsButton" onClick={handleGoogleSignIn}/>
         <h2>Mikä on SPOT<a className='it'>it</a> sovellus?</h2>
-        <h3>SPOT<a className='it'>it</a> on selainpohjainen ilmainen applikaatio, joka auttaa hauskassa rekisterikilpibongaus-harrastuksessa!</h3>
-        <h3>Tarkoituksena on bongailla reksiterikilpiä järjestyksessä. Kirjaudu sisään Google-tunnuksillasi ja olet valmiina aloittamaan bongailun.</h3> 
-        <h3>Voit aloittaa pelin löytämällä rekisterikilven numero 1. Jos olet jo aloittanut pelin, voit jatkaa merkkaamalla seuraavan bongaamasi rekisterikilven</h3>
-
-        <h3>Kartta-osiosta voit merkata sijainnin, jossa bongaat rekisterikilven. Bongaukset tallentuu omalle välilehdelleen.</h3>
-        <GoogleButton class="button" onClick={handleGoogleSignIn}/>
+        <p>SPOT<a className='it'>it</a> on selainpohjainen ilmainen applikaatio, joka auttaa hauskassa rekisterikilpibongaus-harrastuksessa!</p>
+        <p>Tarkoituksena on bongailla reksiterikilpiä järjestyksessä numerosta 1 numeroon 999 asti. Kirjaudu sisään Google-tunnuksillasi ja olet valmiina aloittamaan bongailun.</p> 
+        <p>Voit aloittaa pelin löytämällä rekisterikilven numero 1. Jos olet jo aloittanut pelin, voit jatkaa merkkaamalla seuraavan bongaamasi rekisterikilven</p>
+        <p>Kartta-osiosta voit merkata sijainnin, jossa bongasit rekisterikilven. Bongautut numerot tallentuu omalle välilehdelleen.</p>
       </div>
-      <div>
-        <h2></h2>
       </div>
-    </div>
+    </body>
     
   );
 };

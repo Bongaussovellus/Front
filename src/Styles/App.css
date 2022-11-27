@@ -31,7 +31,7 @@ h1 {
     margin-inline: auto;
     margin-bottom: 3%;
     }
-    
+
 .logos {
     color: white;
     letter-spacing: 2px;
@@ -47,11 +47,50 @@ h1 {
     margin-right: auto;
 }
 
-.LogInPage {
-    margin-top: 15%;
-    padding: 30px;
+.LoginPage {
+    padding: 20px;
+    background: linear-gradient(90deg, #1f1f1f, #171717);	
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom:0;
+    right:0;
+    display: grid;
 }
 
+.LogWindow {
+    width: 40%;
+    height: 90%;
+    margin-top: 4%;
+    margin-bottom: 4%;
+    background-color: #1a1919;
+    box-shadow: 0px 0px 24px #0c0c0c;
+} 
+
+.LogWindow h1 {
+    margin-top: 50px;
+    font-size: 50px;
+    padding-top: 10%
+
+}
+
+.LogText {
+    margin-left: 15%;
+    margin-right: 15%;
+    padding-top: 4%;
+} 
+
+.LogText h2 {
+    margin-top:35px;
+    margin-bottom: 35px;
+}
+img {
+    width: 40%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+
+}
 .logTitle {
     font-size: xx-large;
 }
@@ -78,31 +117,10 @@ h1 {
     padding: 10px 20px;
     overflow: hidden;
 }
-@media screen and (max-width: 769px) {
-    .frontpage {
-        margin-top: 45%;
-    }
-    .home {
-        width: 95%;
-        font-size: small;
-        margin-top: 20%;
-    }
-
-    h1 {
-        font-size: 20px;
-    }
-
-    .img {
-        border-radius: 50%;
-        width: 40px;
-        height: 40px;
-        margin-right:10px;
-        margin-top: 3px;
-    }
-    }
 
 
-@media screen and (max-width: 912px) {
+@media screen and (min-width:768px) and (max-width:1024px) and (orientation:portrait){
+
     .frontpage {
         margin-top: 45%;
     }
@@ -111,25 +129,177 @@ h1 {
         margin-top: 20%;
 
     }
+
+    .LogWindow {
+        width: 80%;
+        height: 75%;
+        margin-top: auto;
+        margin-bottom: auto;
+    } 
+
+    .LogWindow h1 {
+        margin-top: 50px;
+        font-size: 40px;
+        padding-top: 10%
+    
+    }
+    
+    .LogText {
+        margin-left: 10%;
+        margin-right: 10%;
+        padding-top: 6%;
+        font-size: medium;
+    } 
+
+    .LogText h2 {
+        margin-top: 15%;
+    }
+
+    .LogText p:nth-child(3) {
+       margin-top:10% ;
+    }
+    
+    }
+
+@media screen and (min-width:768px) and (max-width:1024px) and (orientation:landscape){
+
+    .frontpage {
+        margin-top: 45%;
+     }
+    .home {
+        width: 85%;
+        margin-top: 20%;
+    
+      }
+    
+    .LogWindow {
+        width: 100%;
+        height: 80%;
+        margin-top: auto;
+        margin-bottom: auto;
+    } 
+    
+    .LogWindow h1 {
+        margin-top: 10px;
+        font-size: 40px;
+        padding-top: 2%;
+        
+    }
+    .LogText {
+        margin-left: 1%;
+        margin-right: 1%;
+        font-size: small;
+        margin-top: 20px;
+        padding-top: 0;
+    } 
+    
+    .LogText h2 {
+        margin-top: 40px;
+        }
+    
+    .LogText p:nth-child(3) {
+        margin-top:0 ;
+     }
+        
+        }
+
+@media screen and (min-width:380px) and (max-width:767px) and (orientation:portrait) {
+    .frontpage {
+        margin-top: 45%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-right:10px;
+        margin-top: 3px;
+    }
+    .home {
+        font-size: small;
+        width: 95%;
+        margin-top: 30%;
+    }
+
+    .LoginPage {
+        padding: 0;
+    }
+        
+    .LogWindow {
+        width: 85%;
+        height: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background-color: #1a1919;
+        box-shadow: 0px 0px 24px #141414;
+    } 
+
+    .LogInWindow h1 {
+        margin-top: 40px;
+        font-size: 30px;
+        padding-top: 10%
+        
+    }
+        
+    .LogText {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-top: 8%;
+    } 
 }
 
-@media screen and (max-width: 576px) {
-        .frontpage {
-            margin-top: 45%;
-        }
-        h1 {
-            font-size: 20px;
-        }
-        .img {
-            border-radius: 50%;
-            width: 30px;
-            height: 30px;
-            margin-right:10px;
-            margin-top: 3px;
-        }
-        .home {
-            font-size: small;
-            width: 95%;
-            margin-top: 30%;
-        }
-        }
+@media screen and (min-width:250px) and (max-width:379px) {
+    .frontpage {
+        margin-top: 45%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-right:10px;
+        margin-top: 3px;
+    }
+    .home {
+        font-size: small;
+        width: 95%;
+        margin-top: 30%;
+    }
+
+
+    .LoginPage {
+        padding: 0;
+    }
+    
+    .LogWindow {
+        width: 95%;
+        height: 95%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background-color: #1a1919;
+        box-shadow: 0px 0px 24px #141414;
+    } 
+
+    .LogInWindow h1 {
+        margin-top: 30px;
+        font-size: 30px;
+        padding-top: 0;
+    
+    }
+    
+    .LogText {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-top: 2%;
+        font-size: small;
+    } 
+
+    .LogText p {
+        font-size: small;
+    } 
+    }
+

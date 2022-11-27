@@ -88,15 +88,25 @@ export default function Map() {
     const regnum = parseInt(textArray[1]);
     setNextRegNum(regnum + 1);
   }
-  // asetetaan arvot olioihin
+  const num = registry.numberplate;
+
   const addRegistry = (e) => {
     e.preventDefault()
-    setValues([...registries,registry])
-    getAddress();
-    writeUserData();
+  // tarkistetaan onko syötetty reknumero liian iso tai pieni kuin
+  // odotettu seuraava reknumero
+    if (num.replace(/\D/g,'') > nextRegNum) {
+      swal({text: "Rekisterinumero jota yrität tallentaa on liian suuri", icon: "error"})
 
-  }
-
+    } else if (num.replace(/\D/g,'') < nextRegNum) {
+      swal({text: "Rekisterinumero jota yrität tallentaa on liian pieni", icon: "error"})
+  // asetetaan arvot olioihin kuin syötetty reknumero vastaa odotettua seuraavaa reknumeroa
+    } else { 
+      setValues([...registries,registry])
+      getAddress();
+      writeUserData();
+      e.window.close();
+    }
+    }
   // 
   useEffect(() => {
     if (location.lat !== 0 & location.lng !== 0) {
@@ -211,7 +221,7 @@ return <div class='Map'>
           <form onSubmit={addRegistry}>
             <input type="text" name='numberplate' className='numberplate' value={registry.numberplate} onChange={inputChanged} placeholder="Syötä rekisterinumero"  />
             <input type="date" name='date' defaultValue={date} onChange={inputChanged} /> 
-            <input type="submit" value="Tallenna" />
+            <input type="submit" value="Tallenna" className='Tallenna'/>
           </form>
         </div>
        </InfoWindowF>): null}

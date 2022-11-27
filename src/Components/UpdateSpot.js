@@ -63,7 +63,7 @@ export default function FormDialog(props) {
   return (
     <div>
       <Button className ="tableButton"  onClick={handleClickOpen}>
-         <AiOutlineEdit size={25} color={'yellow'}/>
+         <AiOutlineEdit size={20} color={'yellow'}/>
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Muokkaa Bongausta!</DialogTitle>
