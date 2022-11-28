@@ -29,7 +29,7 @@ Bongausprojekti on selainenpohjainen applikaatio
 
 1. Rekisteröidy sovellukseen helposti Google-käyttäjän avulla.
 
-(https://i.imgur.com/cTPQJ6C.png)
+![Testi](https://i.imgur.com/cTPQJ6C.png)
 
 2. 
 
