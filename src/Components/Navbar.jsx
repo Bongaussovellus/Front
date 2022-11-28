@@ -1,4 +1,3 @@
-
 import {React} from 'react';
 import { UserAuth } from '../Context/AuthContext';
 import '../Styles/Navbar.css';
