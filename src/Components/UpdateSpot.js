@@ -7,7 +7,7 @@ import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
 import {AiOutlineEdit} from 'react-icons/ai';
 import { UserAuth } from '../Context/AuthContext';
-import { getDatabase, ref, child, get, remove, set, push, update } from "firebase/database";
+import { getDatabase, ref, child, get, update } from "firebase/database";
 
 export default function FormDialog(props) {
    const { user } = UserAuth();
@@ -35,8 +35,6 @@ export default function FormDialog(props) {
          date: data.date,
          location: data.location
       })
-      //console.log(spotKey);
-      //console.log(data);
    };
 
    const handleClose = () => {

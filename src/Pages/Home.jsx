@@ -6,7 +6,6 @@ import { useState } from "react";
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import { Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from '@mui/material';
-import {AiOutlineEdit} from 'react-icons/ai';
 import {RiDeleteBinLine } from 'react-icons/ri';
 import UpdateSpot from '../Components/UpdateSpot';
 
@@ -29,7 +28,7 @@ const Home = () => {
   }).catch((error) => {
     console.error(error);
   });
-  //console.log(items);
+ 
 
   const deleteItem = (id) => {
     remove(
@@ -45,21 +44,6 @@ const Home = () => {
     },
   });
   
-
-  /*return (
-    <div class="home" content="width=device-width, initial-scale=1.0">
-      <div class="title">
-      <img src={user.photoURL}  class="Img"/>
-        <h3 >{user?.displayName} <p></p>Tervetuloa bongailemaan </h3>
-      </div>
-      {items.map((user) => { 
-        return <div>
-          <h1>date: {user.date}</h1>
-          <h1>reknro: {user.registernumber}</h1>
-        </div>})}
-    </div>
-  );
-};*/
 
 return (
   <div class="home" >
