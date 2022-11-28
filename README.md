@@ -41,5 +41,5 @@ Bongausprojekti on selainenpohjainen applikaatio
 
 4. Etusivulla näet yksinkertaisesti edellisen bongauksesi, sekä seuraavaksi bongattavan rekisterinumeron
 
-!(https://imgur.com/thhl9uf)
+[![react4.png](https://i.postimg.cc/Rh2znWzm/react4.png)](https://postimg.cc/CnC23L1r)
 
