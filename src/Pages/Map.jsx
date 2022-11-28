@@ -63,7 +63,7 @@ export default function Map() {
   }
 
   const [item, setItem] = useState([]);
-  const [nextRegNum, setNextRegNum] = useState(null);
+  const [nextRegNum, setNextRegNum] = useState(0);
 
   // Haetaan viimeisin bongaus databasesta
   const latestRef = query(ref(db, 'users/' + user.uid), limitToLast(1));
@@ -76,10 +76,14 @@ export default function Map() {
   })
   //Seuraavan bongauksen päivitys
   function updateNext() {
-    let text = item[0].registernumber;
-    const textArray = text.split('-');
-    const regnum = parseInt(textArray[1]);
-    setNextRegNum(regnum + 1);
+    if (nextRegNum === 0) {
+      setNextRegNum(1);
+    } else {
+      let text = item[0].registernumber;
+      const textArray = text.split('-');
+      const regnum = parseInt(textArray[1]);
+      setNextRegNum(regnum + 1);
+    }
   }
   const num = registry.numberplate;
 
