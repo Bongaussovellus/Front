@@ -100,7 +100,7 @@ export default function Map() {
       setValues([...registries,registry])
       getAddress();
       writeUserData();
-      e.window.close();
+      setSelected(null);
     }
     }
 
