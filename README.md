@@ -24,3 +24,12 @@ Bongaussovellus projektissa on käytetty seuraavia teknologioita:
 
 ## Setup
 Bongausprojekti on selainenpohjainen applikaatio
+
+## Ohjeet
+
+1. Rekisteröidy sovellukseen helposti Google-käyttäjän avulla.
+
+(https://i.imgur.com/cTPQJ6C.png)
+
+2. 
+
