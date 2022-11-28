@@ -29,15 +29,15 @@ Bongausprojekti on selainenpohjainen applikaatio
 
 1. Rekisteröidy sovellukseen helposti Google-käyttäjän avulla.
 
-!(https://i.imgur.com/cTPQJ6C.png)
+[![react1.png](https://i.postimg.cc/fL2sDH2J/react1.png)](https://postimg.cc/njDg11tJ)
 
 2. Avaa Kartta-välilehti. Kartalta voit etsiä sijaintisi, hakea sitä kirjoittamalla osoitteesi tai hakea sen käyttämällä sijainnin paikannusta. Klikkaa sijaintisi kartalle, kirjoita näkemäsi rekisterinumero ja paina tallenna
 
-!(https://imgur.com/RBS18yl)
+[![react2.png](https://i.postimg.cc/kMHCHpRH/react2.png)](https://postimg.cc/kDWL6wcN)
 
 3. Bongaukset-välilehdeltä voit tarkastella bongauksiasi. Mikäili olet tehnyt virheellisen bongauksen tallennuksen, voit muokata tai poistaa tallennuksen
 
-!(https://imgur.com/meAhvyD)
+[![react3.png](https://i.postimg.cc/4yYgdzqw/react3.png)](https://postimg.cc/q6HYDCkC)
 
 4. Etusivulla näet yksinkertaisesti edellisen bongauksesi, sekä seuraavaksi bongattavan rekisterinumeron
 
