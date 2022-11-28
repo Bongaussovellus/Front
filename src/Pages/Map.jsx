@@ -146,12 +146,6 @@ export default function Map() {
     libraries: libraries
   });
 
-  /*const {isLoaded, loadError} = useLoadScript ({
-    googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
-    googlePlacesApiKey: process.env.REACT_APP_GOOGLE_PLACES_API_KEY,
-    libraries: ["places"]
-  });*/
-
 // luodaan markkerit sekä valinta-oliot
 const [markers, setMarkers] = React.useState([]);
 const [selected, setSelected] = React.useState(null);
