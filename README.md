@@ -4,6 +4,8 @@
 * [Yleinen info](#yleinen-info)
 * [Teknologiat](#teknologiat)
 * [Setup](#setup)
+* [Ohjeet](#ohjeet)
+* [Projektiin osallistuneet](#projektiin_osallistuneet)
 
 
 ## Yleinen info
@@ -23,7 +25,11 @@ Bongaussovellus projektissa on käytetty seuraavia teknologioita:
 * [Google Maps API](https://developers.google.com/maps)
 
 ## Setup
-Bongausprojekti on selainenpohjainen applikaatio
+Bongausprojektia voi tällä hetkellä käyttää kloonaamalla ja ajamalla tämä github-repositorio. 
+
+1. Kloonaa repositorio [git clone https://github.com/Bongaussovellus/Front] 
+2. Lataa NPM paketit [npm install]
+3. Aja sovellus [npm start]
 
 ## Ohjeet
 
@@ -42,4 +48,13 @@ Bongausprojekti on selainenpohjainen applikaatio
 4. Etusivulla näet yksinkertaisesti edellisen bongauksesi, sekä seuraavaksi bongattavan rekisterinumeron
 
 [![react4.png](https://i.postimg.cc/Rh2znWzm/react4.png)](https://postimg.cc/CnC23L1r)
+
+## Projektiin osallistuneet
+
+Projektiin osallistui: 
+* Niko Mäkinen
+* Emilia Mäkelä
+* Tuukka Nisonen
+* Yasin Rahimu
+* Erik Lindstedt
 
