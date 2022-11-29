@@ -26,7 +26,7 @@ Bongaussovellus projektissa on käytetty seuraavia teknologioita:
 
 ## Setup
 Bongausprojekti on julkaistu Netlifyn avulla. <br />
-Sovellusta voi käyttää tietokoneella, tabletilla sekä puhelimella. <br />
+Sovellusta voi käyttää tietokoneella sekä Android tableteilla sekä puhelimilla. <br />
 Sovellusta pääset käyttämään alla olevasta linkistä <br />
 
 [spott-it.netlify.app](https://spott-it.netlify.app/)
