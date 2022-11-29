@@ -74,7 +74,7 @@ div{
   padding: 4px 9px;
 }
 
-@media only screen and (min-width : 281px) and (max-width : 780px)
+@media only screen and (min-width : 361px) and (max-width : 780px)
 {
   .Map {
     margin-inline: auto;
@@ -83,49 +83,75 @@ div{
 		width:200px;
 	}
 
+  .nextReg {
+    margin-right: 100px;
+  
+  }
+
   .locate {
     position: absolute;
     display: flex;
     cursor: pointer;
     right: 0;
     margin-top: 9px;
-    background-color: rgba(255, 255, 255, 0.54);
     transition: all 0.3s ease 0s;
-    margin-right: 60px;
+    margin-right: 55px;
     border-radius: 50%;
     color: rgb(19, 22, 35);
 }
-.locate:hover {
-  color: rgb(255, 0, 0);
 }
 
-
-
-}
-
-@media only screen and (min-width : 180px) and (max-width : 280px)
+@media only screen and (min-width : 320px) and (max-width : 360px)
 {
-  .Map {
-    margin-inline: auto;
- }
   .ComboboxInput {
-		width:150px;
+		width:170px;
 	}
-  .locate {
+
+  
+.nextReg {
+  margin-right: 70px;
+
+}
+
+.infoWindow {
+  width: 290px;
+}
+
+.locate {
     position: absolute;
     display: flex;
     cursor: pointer;
     margin-top: 65px;
     transition: all 0.3s ease 0s;
     margin-right: 10px;
-    background-color: rgba(255, 255, 255, 0.727);
     border-radius: 50%;
     color: rgb(21, 27, 54);
 }
-  .locate:hover {
-    color: rgb(255, 0, 0);
-  }
 
+}
 
+@media only screen and (min-width : 180px) and (max-width : 319px)
+{
+  .ComboboxInput {
+		width:150px;
+	}
+
+  
+.nextReg {
+  margin-right: 6px;
+  margin-top: 100px;
+
+}
+
+  .locate {
+    position: absolute;
+    display: flex;
+    cursor: pointer;
+    margin-top: 60px;
+    transition: all 0.3s ease 0s;
+    margin-right: 0;
+    border-radius: 50%;
+    color: rgb(21, 27, 54);
+}
 
 }

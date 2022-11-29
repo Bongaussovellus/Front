@@ -16,6 +16,7 @@ function AddRegistry() {
 
     const [text, setText] = useState('')
     
+    //Tallentaa tietokantaan bongauksen
     const addRegisterNumber = () => {
         let date = spot.date.getFullYear() + '-' + (spot.date.getMonth() + 1) +
         '-' + spot.date.getDate()

@@ -29,7 +29,7 @@ const Home = () => {
     console.error(error);
   });
  
-
+//Poistaa valitun bongauksen
   const deleteItem = (id) => {
     remove(
       ref(db, 'users/' + user.uid + "/" + id)
@@ -38,6 +38,7 @@ const Home = () => {
     window.location.reload(false);
   }
 
+//Taulukon väritys
   const darkTheme = createTheme({
     palette: {
       mode: 'dark',

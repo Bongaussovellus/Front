@@ -3,8 +3,6 @@ import {GoogleButton} from 'react-google-button'
 import { UserAuth } from '../Context/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import '../Styles/App.css'
-import reg from '../reg.png';
-
 const Login = () => {
   const { googleSignIn, user } = UserAuth();
   const navigate = useNavigate();
@@ -21,8 +19,7 @@ const Login = () => {
     }
   };
 
-  
-
+  //Ohjaa käyttäjän etusivulle
   useEffect(() => {
     if (user != null) {
       navigate('/FrontPage');

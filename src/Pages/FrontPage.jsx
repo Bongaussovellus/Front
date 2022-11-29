@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import '../Styles/App.css'
-import './Home'
+import './SpottedPlates'
 import { getDatabase, ref, query, limitToLast, get } from 'firebase/database';
 import { UserAuth } from '../Context/AuthContext';
 

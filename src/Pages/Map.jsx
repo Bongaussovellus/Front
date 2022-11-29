@@ -36,8 +36,6 @@ const options = {
 };
 
 const libraries = ["places"];
-
-
 const db = getDatabase();
 
 export default function Map() {
@@ -56,6 +54,7 @@ export default function Map() {
     lat: 0,
     lng: 0
   })
+  
   const [registries, setValues] = useState([])
 
   const inputChanged = (e) => {
@@ -207,7 +206,7 @@ return <div class='Map'>
         
        {selected ? (
         // Luo infoikkunan valitulle pisteelle, johon voi lisätä rekisterinumeron ja päivämäärän
-       <InfoWindowF position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => { 
+       <InfoWindowF  position={{ lat: selected.lat, lng: selected.lng }} onCloseClick = {() => { 
           setSelected(null)}}>
 
         <div>

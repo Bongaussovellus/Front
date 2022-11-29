@@ -1,5 +1,5 @@
 import Login from './Pages/Login';
-import Home from './Pages/Home';
+import SpottedPlates from './Pages/SpottedPlates';
 import Map from './Pages/Map';
 import Navbar from './Components/Navbar';
 import Protected from './Components/Protected';
@@ -25,9 +25,9 @@ function App() {
               </Protected>
             }
           />  
-          <Route path='/Home' element={
+          <Route path='/SpottedPlates' element={
               <Protected>
-                <Home />
+                <SpottedPlates />
               </Protected>
             }
           />

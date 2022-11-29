@@ -22,7 +22,7 @@ export default function FormDialog(props) {
       location: ''
    });
 
-   // Haetaan tietyn bongauksen tiedot databasesta spotKeyn ja uid:n perusteella
+   // Haetaan tietyn bongauksen tiedot tietokannasta spotKeyn ja uid:n perusteella
    get(child(dbRef, `users/${user.uid}/${spotKey}`)).then((snapshot) => {
       setData(snapshot.val());
       
@@ -45,7 +45,7 @@ export default function FormDialog(props) {
       setNewData({...newData, [event.target.name]: event.target.value});
    }
 
-   // Päivitetään data databaseen
+   // Päivitetään data tietokantaan
    const updateData = () => {
       update(ref(db, 'users/' + user.uid + "/" + spotKey),
       {

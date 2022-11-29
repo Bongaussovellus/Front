@@ -113,10 +113,112 @@ img {
 
 .next {
 
-    margin:5% 30%;
+    margin-left: auto;
+    margin-right: auto;
     padding: 10px 20px;
-    overflow: hidden;
+    width: 80%;
 }
+@media screen and (min-width:380px) and (max-width:767px) and (orientation:portrait) {
+    .frontpage {
+        margin-top: 45%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-right:10px;
+        margin-top: 3px;
+    }
+    .home {
+        font-size: small;
+        width: 95%;
+        margin-top: 30%;
+    }
+
+    .LoginPage {
+        padding: 0;
+    }
+        
+    .LogWindow {
+        width: 85%;
+        height: 90%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background-color: #1a1919;
+        box-shadow: 0px 0px 24px #141414;
+    } 
+
+    .LogInWindow h1 {
+        margin-top: 40px;
+        font-size: 30px;
+        padding-top: 10%
+        
+    }
+        
+    .LogText {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-top: 8%;
+    } 
+
+}
+
+@media screen and (min-width:250px) and (max-width:379px) {
+    .frontpage {
+        margin-top: 45%;
+    }
+    h1 {
+        font-size: 20px;
+    }
+    .img {
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        margin-right:10px;
+        margin-top: 3px;
+    }
+    .home {
+        font-size: small;
+        width: 95%;
+        margin-top: 30%;
+    }
+
+
+    .LoginPage {
+        padding: 0;
+    }
+    
+    .LogWindow {
+        width: 95%;
+        height: 95%;
+        margin-top: auto;
+        margin-bottom: auto;
+        background-color: #1a1919;
+        box-shadow: 0px 0px 24px #141414;
+    } 
+
+    .LogInWindow h1 {
+        margin-top: 30px;
+        font-size: 30px;
+        padding-top: 0;
+    
+    }
+    
+    .LogText {
+        margin-left: 2%;
+        margin-right: 2%;
+        padding-top: 2%;
+        font-size: small;
+    } 
+
+    .LogText p {
+        font-size: small;
+    } 
+    }
+
 
 
 @media screen and (min-width:768px) and (max-width:1024px) and (orientation:portrait){
@@ -202,104 +304,4 @@ img {
      }
         
         }
-
-@media screen and (min-width:380px) and (max-width:767px) and (orientation:portrait) {
-    .frontpage {
-        margin-top: 45%;
-    }
-    h1 {
-        font-size: 20px;
-    }
-    .img {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        margin-right:10px;
-        margin-top: 3px;
-    }
-    .home {
-        font-size: small;
-        width: 95%;
-        margin-top: 30%;
-    }
-
-    .LoginPage {
-        padding: 0;
-    }
-        
-    .LogWindow {
-        width: 85%;
-        height: 90%;
-        margin-top: auto;
-        margin-bottom: auto;
-        background-color: #1a1919;
-        box-shadow: 0px 0px 24px #141414;
-    } 
-
-    .LogInWindow h1 {
-        margin-top: 40px;
-        font-size: 30px;
-        padding-top: 10%
-        
-    }
-        
-    .LogText {
-        margin-left: 2%;
-        margin-right: 2%;
-        padding-top: 8%;
-    } 
-}
-
-@media screen and (min-width:250px) and (max-width:379px) {
-    .frontpage {
-        margin-top: 45%;
-    }
-    h1 {
-        font-size: 20px;
-    }
-    .img {
-        border-radius: 50%;
-        width: 30px;
-        height: 30px;
-        margin-right:10px;
-        margin-top: 3px;
-    }
-    .home {
-        font-size: small;
-        width: 95%;
-        margin-top: 30%;
-    }
-
-
-    .LoginPage {
-        padding: 0;
-    }
-    
-    .LogWindow {
-        width: 95%;
-        height: 95%;
-        margin-top: auto;
-        margin-bottom: auto;
-        background-color: #1a1919;
-        box-shadow: 0px 0px 24px #141414;
-    } 
-
-    .LogInWindow h1 {
-        margin-top: 30px;
-        font-size: 30px;
-        padding-top: 0;
-    
-    }
-    
-    .LogText {
-        margin-left: 2%;
-        margin-right: 2%;
-        padding-top: 2%;
-        font-size: small;
-    } 
-
-    .LogText p {
-        font-size: small;
-    } 
-    }
 
