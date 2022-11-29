@@ -25,11 +25,12 @@ Bongaussovellus projektissa on käytetty seuraavia teknologioita:
 * [Google Maps API](https://developers.google.com/maps)
 
 ## Setup
-Bongausprojektia voi tällä hetkellä käyttää kloonaamalla ja ajamalla tämä github-repositorio. 
+Bongausprojekti on julkaistu Netlifyn avulla.
+Sovellusta voi käyttää tietokoneella, tabletilla sekä puhelimella.
+Sovellusta pääset käyttämään alla olevasta linkistä
 
-1. Kloonaa repositorio [git clone https://github.com/Bongaussovellus/Front] 
-2. Lataa NPM paketit [npm install]
-3. Aja sovellus [npm start]
+[spott-it.netlify.app](https://spott-it.netlify.app/)
+
 
 ## Ohjeet
 
