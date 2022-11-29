@@ -104,6 +104,7 @@ export default function Map() {
       getAddress();
       writeUserData();
       setSelected(null);
+      swal("Bongaus tallennettu!")
     }
     }
 

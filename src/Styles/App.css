@@ -141,6 +141,10 @@ img {
     .LoginPage {
         padding: 0;
     }
+
+    .next {
+        overflow-y: scroll;
+    }
         
     .LogWindow {
         width: 85%;
@@ -179,6 +183,10 @@ img {
         height: 30px;
         margin-right:10px;
         margin-top: 3px;
+    }
+
+    .next {
+        overflow-y: scroll;
     }
     .home {
         font-size: small;

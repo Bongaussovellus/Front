@@ -17,7 +17,6 @@ export default function FormDialog(props) {
    const spotKey = props.spotKey;
    const dbRef = ref(getDatabase());
    const [newData, setNewData] = React.useState({
-      registernumber: '',
       date: '',
       location: ''
    });
@@ -31,7 +30,6 @@ export default function FormDialog(props) {
    const handleClickOpen = () => {
       setOpen(true);
       setNewData({
-         registernumber: data.registernumber,
          date: data.date,
          location: data.location
       })
@@ -49,7 +47,6 @@ export default function FormDialog(props) {
    const updateData = () => {
       update(ref(db, 'users/' + user.uid + "/" + spotKey),
       {
-         registernumber: newData.registernumber,
          location: newData.location,
          date: newData.date
       });
@@ -66,15 +63,6 @@ export default function FormDialog(props) {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Muokkaa Bongausta!</DialogTitle>
         <DialogContent>
-         <TextField
-            margin="dense"
-            name="registernumber"
-            value={newData.registernumber}
-            onChange={e => handleInputChange(e)}
-            label="Rekisterinumero"
-            fullWidth
-            variant="standard"
-         />
          <TextField
             margin="dense"
             name="date"

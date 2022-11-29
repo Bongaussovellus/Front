@@ -20,7 +20,7 @@ function AddRegistry() {
     const addRegisterNumber = () => {
         let date = spot.date.getFullYear() + '-' + (spot.date.getMonth() + 1) +
         '-' + spot.date.getDate()
-        const formData = new FormData
+        const formData = new FormData()
         formData.append('registernumber', spot.registernumber)
         formData.append('location', spot.location)
         formData.append('date', date)
