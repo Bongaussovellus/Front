@@ -19,17 +19,18 @@ Bongausprojektissa käytetään Googlen Maps, sekä Places API:ta, joka mahdolli
 
 Bongaussovellus projektissa on käytetty seuraavia teknologioita:
 
-* [React Native](https://reactnative.dev/)
+* [React](https://reactjs.org/)
 * [Firebase](https://firebase.google.com/)
 * [Google Places API](https://developers.google.com/maps/documentation/places/web-service)
 * [Google Maps API](https://developers.google.com/maps)
 
 ## Setup
-Bongausprojektia voi tällä hetkellä käyttää kloonaamalla ja ajamalla tämä github-repositorio. 
+Bongausprojekti on julkaistu Netlifyn avulla. <br />
+Sovellusta voi käyttää tietokoneella sekä Android tableteilla sekä puhelimilla. <br />
+Sovellusta pääset käyttämään alla olevasta linkistä <br />
 
-1. Kloonaa repositorio [git clone https://github.com/Bongaussovellus/Front] 
-2. Lataa NPM paketit [npm install]
-3. Aja sovellus [npm start]
+[spott-it.netlify.app](https://spott-it.netlify.app/)
+
 
 ## Ohjeet
 

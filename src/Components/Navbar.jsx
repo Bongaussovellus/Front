@@ -20,7 +20,7 @@ function Navbar() {
   <header>
     <nav>
       <input type="checkbox" id="nav-toggle"/>
-      <div> < a class="logo" href="/Home" >SPOT<a className="it" >it</a></a></div>
+      <div> < a class="logo" href="/SpottedPlates" >SPOT<a className="it" >it</a></a></div>
       <ul class="links">
         <li><a href="/FrontPage">Etusivu</a></li>
         <li><a href="/SpottedPlates">Bongaukset</a></li>
